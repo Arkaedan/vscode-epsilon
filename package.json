@@ -10,6 +10,10 @@
   "categories": [
     "Programming Languages"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Arkaedan/vscode-epsilon.git"
+  },
   "contributes": {
     "languages": [
       {
