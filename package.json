@@ -2,6 +2,7 @@
   "name": "eclipse-epsilon-languages",
   "displayName": "Eclipse Epsilon Languages",
   "description": "Syntax highlighting for the Eclipse Epsilon languages and Emfatic",
+  "publisher": "SamHarris",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.70.0"
