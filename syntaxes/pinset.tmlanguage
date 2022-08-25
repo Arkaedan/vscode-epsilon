@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>pinset</string>
+	</array>
+	<key>name</key>
+	<string>Pinset</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>source.epsilon.eol</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(pre|post|dataset|over|from|guard|properties|reference|column|grid|keys|header|body|as)\b</string>
+			<key>name</key>
+			<string>keyword.control.pinset</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.epsilon.pinset</string>
+	<key>uuid</key>
+	<string>38DCE4DD-F5E1-4ED3-8847-64DA6B1F9169</string>
+</dict>
+</plist>

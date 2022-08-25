@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>emf</string>
+	</array>
+	<key>name</key>
+	<string>Emfatic</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>end</key>
+			<string>\*/</string>
+			<key>name</key>
+			<string>comment.block.emfatic</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>//.*$</string>
+			<key>name</key>
+			<string>comment.line.double-slash.emfatic</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b\d+(\.\d+)?\b</string>
+			<key>name</key>
+			<string>constant.numeric.emfatic</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(abstract|attr|class|enum|extends|import|package|ref|val|op|readonly|volatile|transient|unsettable|derived|unique|ordered|resolve|id)\b</string>
+			<key>name</key>
+			<string>keyword.control.emfatic</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>'</string>
+			<key>end</key>
+			<string>'</string>
+			<key>name</key>
+			<string>string.quoted.single.emfatic</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>"</string>
+			<key>end</key>
+			<string>"</string>
+			<key>name</key>
+			<string>string.quoted.double.emfatic</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(boolean|Boolean|byte|Byte|char|Character|double|Double|float|Float|int|Integer|long|Long|short|Short|Date|String|Object|Class|EObject|EClass)\b</string>
+			<key>name</key>
+			<string>storage.type.emfatic</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.emfatic</string>
+	<key>uuid</key>
+	<string>98DCE4DD-F5E1-4ED3-8847-64DA6B1F9164</string>
+</dict>
+</plist>

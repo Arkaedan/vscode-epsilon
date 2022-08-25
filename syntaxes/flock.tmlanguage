@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>flock</string>
+	</array>
+	<key>name</key>
+	<string>Flock</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>source.epsilon.eol</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(delete|retype|to|migrate|when|ignoring|package|pre|post)\b</string>
+			<key>name</key>
+			<string>keyword.control.flock</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(original|migrated)\b</string>
+			<key>name</key>
+			<string>constant.language.flock</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.epsilon.flock</string>
+	<key>uuid</key>
+	<string>28DCE4DD-F5E1-4ED3-8847-64DA6B1F9265</string>
+</dict>
+</plist>

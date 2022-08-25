@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>flexmi</string>
+	</array>
+	<key>name</key>
+	<string>Flexmi (YAML)</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>source.yaml</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.epsilon.flexmi.yaml</string>
+	<key>uuid</key>
+	<string>29DCE4DD-F5E1-4ED3-8847-64DA6B1F9165</string>
+</dict>
+</plist>

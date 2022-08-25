@@ -1,0 +1,161 @@
+{
+  "name": "eclipse-epsilon-languages",
+  "displayName": "Eclipse Epsilon Languages",
+  "description": "Syntax highlighting for the Eclipse Epsilon languages and Emfatic",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "eol",
+        "aliases": ["Epsilon Object Language", "EOL", "eol"],
+        "extensions": [".eol"],
+        "configuration": "./language-configurations/eol.language-configuration.json"
+      },
+      {
+        "id": "ecl",
+        "aliases": [ "Epsilon Comparison Language", "ECL", "ecl"],
+        "extensions": [".ecl"],
+        "configuration": "./language-configurations/ecl.language-configuration.json"
+      },
+      {
+        "id": "egl",
+        "aliases": [ "Epsilon Generation Language", "EGL", "egl"],
+        "extensions": [".egl"],
+        "configuration": "./language-configurations/egl.language-configuration.json"
+      },
+      {
+        "id": "egx",
+        "aliases": [ "EGL Co-Ordination Language", "EGX", "egx"],
+        "extensions": [".egx"],
+        "configuration": "./language-configurations/egx.language-configuration.json"
+      },
+      {
+        "id": "evl",
+        "aliases": [ "Epsilon Validation Language", "EVL", "evl"],
+        "extensions": [".evl"],
+        "configuration": "./language-configurations/evl.language-configuration.json"
+      },
+      {
+        "id": "etl",
+        "aliases": [ "Epsilon Transformation Language", "ETL", "etl"],
+        "extensions": [".etl"],
+        "configuration": "./language-configurations/etl.language-configuration.json"
+      },
+      {
+        "id": "eml",
+        "aliases": [ "Epsilon Merging Language", "EML", "eml"],
+        "extensions": [".eml"],
+        "configuration": "./language-configurations/eml.language-configuration.json"
+      },
+      {
+        "id": "epl",
+        "aliases": [ "Epsilon Pattern Language", "EPL", "epl"],
+        "extensions": [".epl"],
+        "configuration": "./language-configurations/epl.language-configuration.json"
+      },
+      {
+        "id": "flock",
+        "aliases": ["Epsilon Flock", "Flock", "flock"],
+        "extensions": [".flock"],
+        "configuration": "./language-configurations/flock.language-configuration.json"
+      },
+      {
+        "id": "pinset",
+        "aliases": ["Epsilon Pinset", "Pinset", "pinset"],
+        "extensions": [".pinset"],
+        "configuration": "./language-configurations/pinset.language-configuration.json"
+      },
+      {
+        "id": "emfatic",
+        "aliases": ["Emfatic", "emfatic"],
+        "extensions": [".emf"],
+        "configuration": "./language-configurations/emfatic.language-configuration.json"
+      },
+      {
+        "id": "flexmi-xml",
+        "aliases": ["Flexmi (XML)", "flexmi-xml"],
+        "extensions": [".flexmi"],
+        "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
+      },
+      {
+        "id": "flexmi-yaml",
+        "aliases": ["Flexmi (YAML)", "flexmi-yaml"],
+        "extensions": [".flexmi"],
+        "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "eol",
+        "scopeName": "source.epsilon.eol",
+        "path": "./syntaxes/eol.tmlanguage"
+      },
+      {
+        "language": "ecl",
+        "scopeName": "source.epsilon.ecl",
+        "path": "./syntaxes/ecl.tmlanguage"
+      },
+      {
+        "language": "egl",
+        "scopeName": "source.epsilon.egl",
+        "path": "./syntaxes/egl.tmlanguage"
+      },
+      {
+        "language": "egx",
+        "scopeName": "source.epsilon.egx",
+        "path": "./syntaxes/egx.tmlanguage"
+      },
+      {
+        "language": "evl",
+        "scopeName": "source.epsilon.evl",
+        "path": "./syntaxes/evl.tmlanguage"
+      },
+      {
+        "language": "etl",
+        "scopeName": "source.epsilon.etl",
+        "path": "./syntaxes/etl.tmlanguage"
+      },
+      {
+        "language": "eml",
+        "scopeName": "source.epsilon.eml",
+        "path": "./syntaxes/eml.tmlanguage"
+      },
+      {
+        "language": "epl",
+        "scopeName": "source.epsilon.epl",
+        "path": "./syntaxes/epl.tmlanguage"
+      },
+      {
+        "language": "flock",
+        "scopeName": "source.epsilon.flock",
+        "path": "./syntaxes/flock.tmlanguage"
+      },
+      {
+        "language": "pinset",
+        "scopeName": "source.epsilon.pinset",
+        "path": "./syntaxes/pinset.tmlanguage"
+      },
+      {
+        "language": "emfatic",
+        "scopeName": "source.emfatic",
+        "path": "./syntaxes/emfatic.tmlanguage"
+      },
+      {
+        "language": "flexmi-xml",
+        "scopeName": "source.epsilon.flexmi",
+        "path": "./syntaxes/flexmi-xml.tmlanguage"
+      },
+      {
+        "language": "flexmi-yaml",
+        "scopeName": "source.epsilon.flexmi.yaml",
+        "path": "./syntaxes/flexmi-yaml.tmlanguage"
+      }
+    ]
+  }
+}

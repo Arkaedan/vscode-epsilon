@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>epl</string>
+		<string>emg</string>
+	</array>
+	<key>name</key>
+	<string>EPL</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>source.epsilon.eol</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(pre|post|pattern|match|guard|do|onmatch|nomatch|from|no|optional|active)\b</string>
+			<key>name</key>
+			<string>keyword.control.evl</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.epsilon.epl</string>
+	<key>uuid</key>
+	<string>28DCE4DD-F5E1-4ED3-8847-64DA6B1F9178</string>
+</dict>
+</plist>
