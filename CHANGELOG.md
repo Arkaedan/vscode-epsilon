@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.0
+
+Improved EGL support:
+- Static sections are now designated as a string for better highlighting
+- Added better bracket handling for dynamic sections
+
 ## 1.0.0
 
 Initial release.
