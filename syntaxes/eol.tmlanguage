@@ -28,7 +28,7 @@
 			<key>match</key>
 			<string>@.*$</string>
 			<key>name</key>
-			<string>comment.line.annotation</string>
+			<string>support.function.annotation.eol</string>
 		</dict>		
 		<!--dict>
 			<key>match</key>
