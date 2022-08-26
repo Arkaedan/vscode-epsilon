@@ -35,7 +35,7 @@
 			<key>match</key>
 			<string>.*</string>
 			<key>name</key>
-			<string>string.interpolated</string>
+			<string>string.interpolated.egl</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
