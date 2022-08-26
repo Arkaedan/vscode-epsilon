@@ -31,6 +31,12 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>match</key>
+			<string>.*</string>
+			<key>name</key>
+			<string>string.interpolated</string>
+		</dict>
 	</array>
 	<key>scopeName</key>
 	<string>source.epsilon.egl</string>
