@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1
+
+Fix EGL static section matching 
+
 ## 1.1.0
 
 Improved EGL support:
