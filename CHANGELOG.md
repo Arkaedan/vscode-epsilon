@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.2
+
+Fix highlighting for comments in the middle of EGL static sections
+
 ## 1.1.1
 
 Fix EGL static section matching 
