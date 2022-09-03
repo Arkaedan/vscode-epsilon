@@ -10,6 +10,13 @@
   "categories": [
     "Programming Languages"
   ],
+  "keywords": [
+    "eclipse",
+    "epsilon",
+    "emfatic",
+    "emf",
+    "mde"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Arkaedan/vscode-epsilon.git"
