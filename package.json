@@ -3,7 +3,7 @@
   "displayName": "Eclipse Epsilon Languages",
   "description": "Syntax highlighting for the Eclipse Epsilon languages and Emfatic",
   "publisher": "SamHarris",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -29,80 +29,155 @@
     "languages": [
       {
         "id": "eol",
-        "aliases": ["Epsilon Object Language", "EOL", "eol"],
-        "extensions": [".eol"],
+        "aliases": [
+          "Epsilon Object Language",
+          "EOL",
+          "eol"
+        ],
+        "extensions": [
+          ".eol"
+        ],
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "ecl",
-        "aliases": [ "Epsilon Comparison Language", "ECL", "ecl"],
-        "extensions": [".ecl"],
+        "aliases": [
+          "Epsilon Comparison Language",
+          "ECL",
+          "ecl"
+        ],
+        "extensions": [
+          ".ecl"
+        ],
         "configuration": "./language-configurations/ecl.language-configuration.json"
       },
       {
         "id": "egl",
-        "aliases": [ "Epsilon Generation Language", "EGL", "egl"],
-        "extensions": [".egl"],
+        "aliases": [
+          "Epsilon Generation Language",
+          "EGL",
+          "egl"
+        ],
+        "extensions": [
+          ".egl"
+        ],
         "configuration": "./language-configurations/egl.language-configuration.json"
       },
       {
         "id": "egx",
-        "aliases": [ "EGL Co-Ordination Language", "EGX", "egx"],
-        "extensions": [".egx"],
+        "aliases": [
+          "EGL Co-Ordination Language",
+          "EGX",
+          "egx"
+        ],
+        "extensions": [
+          ".egx"
+        ],
         "configuration": "./language-configurations/egx.language-configuration.json"
       },
       {
         "id": "evl",
-        "aliases": [ "Epsilon Validation Language", "EVL", "evl"],
-        "extensions": [".evl"],
+        "aliases": [
+          "Epsilon Validation Language",
+          "EVL",
+          "evl"
+        ],
+        "extensions": [
+          ".evl"
+        ],
         "configuration": "./language-configurations/evl.language-configuration.json"
       },
       {
         "id": "etl",
-        "aliases": [ "Epsilon Transformation Language", "ETL", "etl"],
-        "extensions": [".etl"],
+        "aliases": [
+          "Epsilon Transformation Language",
+          "ETL",
+          "etl"
+        ],
+        "extensions": [
+          ".etl"
+        ],
         "configuration": "./language-configurations/etl.language-configuration.json"
       },
       {
         "id": "eml",
-        "aliases": [ "Epsilon Merging Language", "EML", "eml"],
-        "extensions": [".eml"],
+        "aliases": [
+          "Epsilon Merging Language",
+          "EML",
+          "eml"
+        ],
+        "extensions": [
+          ".eml"
+        ],
         "configuration": "./language-configurations/eml.language-configuration.json"
       },
       {
         "id": "epl",
-        "aliases": [ "Epsilon Pattern Language", "EPL", "epl"],
-        "extensions": [".epl"],
+        "aliases": [
+          "Epsilon Pattern Language",
+          "EPL",
+          "epl"
+        ],
+        "extensions": [
+          ".epl"
+        ],
         "configuration": "./language-configurations/epl.language-configuration.json"
       },
       {
         "id": "flock",
-        "aliases": ["Epsilon Flock", "Flock", "flock"],
-        "extensions": [".flock"],
+        "aliases": [
+          "Epsilon Flock",
+          "Flock",
+          "flock"
+        ],
+        "extensions": [
+          ".flock"
+        ],
         "configuration": "./language-configurations/flock.language-configuration.json"
       },
       {
         "id": "pinset",
-        "aliases": ["Epsilon Pinset", "Pinset", "pinset"],
-        "extensions": [".pinset"],
+        "aliases": [
+          "Epsilon Pinset",
+          "Pinset",
+          "pinset"
+        ],
+        "extensions": [
+          ".pinset"
+        ],
         "configuration": "./language-configurations/pinset.language-configuration.json"
       },
       {
         "id": "emfatic",
-        "aliases": ["Emfatic", "emfatic"],
-        "extensions": [".emf"],
+        "aliases": [
+          "Emfatic",
+          "emfatic"
+        ],
+        "extensions": [
+          ".emf"
+        ],
         "configuration": "./language-configurations/emfatic.language-configuration.json"
       },
       {
         "id": "flexmi-xml",
-        "aliases": ["Flexmi (XML)", "flexmi-xml"],
-        "extensions": [".flexmi"],
+        "aliases": [
+          "Flexmi (XML)",
+          "flexmi-xml"
+        ],
+        "extensions": [
+          ".flexmi"
+        ],
         "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
       },
       {
         "id": "flexmi-yaml",
-        "aliases": ["Flexmi (YAML)", "flexmi-yaml"],
-        "extensions": [".flexmi"],
+        "aliases": [
+          "Flexmi (YAML)",
+          "flexmi-yaml"
+        ],
+        "extensions": [
+          ".flexmi"
+        ],
         "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
       }
     ],
@@ -175,24 +250,24 @@
     ]
   },
   "scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.50.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.9.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0"
-	}
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.50.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "eslint": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0"
+  }
 }

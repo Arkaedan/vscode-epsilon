@@ -1,16 +1,21 @@
 # Change Log
 
+## 1.2.0
+
+Added detection of Epsilon program locations in the terminal (thanks [Dimitris](https://github.com/kolovos))
+
 ## 1.1.2
 
 Fix highlighting for comments in the middle of EGL static sections
 
 ## 1.1.1
 
-Fix EGL static section matching 
+Fix EGL static section matching
 
 ## 1.1.0
 
 Improved EGL support:
+
 - Static sections are now designated as a string for better highlighting
 - Added better bracket handling for dynamic sections
 
@@ -19,6 +24,7 @@ Improved EGL support:
 Initial release.
 
 Support is included for the following languages:
+
 - Epsilon Object Language (EOL)
 - Epsilon Comparison Language (ECL)
 - Epsilon Generation Language (EGL)
