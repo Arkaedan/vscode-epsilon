@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.1
+
+Fix: Make valid web extension (thanks [Dimitris](https://github.com/kolovos))
+
 ## 1.2.0
 
 Added detection of Epsilon program locations in the terminal (thanks [Dimitris](https://github.com/kolovos))
