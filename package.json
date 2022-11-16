@@ -21,6 +21,7 @@
     "*"
   ],
   "main": "./out/extension.js",
+  "browser": "./out/extension.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Arkaedan/vscode-epsilon.git"
