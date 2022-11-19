@@ -32,7 +32,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(abstract|attr|class|enum|extends|import|package|ref|val|op|readonly|volatile|transient|unsettable|derived|unique|ordered|resolve|id)\b</string>
+			<string>\b(abstract|attr|class|enum|mapentry|extends|import|package|ref|val|op|readonly|volatile|transient|unsettable|derived|unique|ordered|resolve|id)\b</string>
 			<key>name</key>
 			<string>keyword.control.emfatic</string>
 		</dict>
