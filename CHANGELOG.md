@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.3.0
+
+Emfatic: Add support for `mapentry` keyword
+Meta: Add Epsilon logo for extenion icon
+
 ## 1.2.1
 
 Fix: Make valid web extension (thanks [Dimitris](https://github.com/kolovos))
