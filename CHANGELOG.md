@@ -3,7 +3,8 @@
 ## 1.3.0
 
 Emfatic: Add support for `mapentry` keyword
-Meta: Add Epsilon logo for extenion icon
+
+Meta: Add Epsilon logo for extension icon
 
 ## 1.2.1
 
