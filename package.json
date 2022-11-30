@@ -51,7 +51,7 @@
         "extensions": [
           ".ecl"
         ],
-        "configuration": "./language-configurations/ecl.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "egl",
@@ -75,7 +75,7 @@
         "extensions": [
           ".egx"
         ],
-        "configuration": "./language-configurations/egx.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "evl",
@@ -87,7 +87,7 @@
         "extensions": [
           ".evl"
         ],
-        "configuration": "./language-configurations/evl.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "etl",
@@ -99,7 +99,7 @@
         "extensions": [
           ".etl"
         ],
-        "configuration": "./language-configurations/etl.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "eml",
@@ -111,7 +111,7 @@
         "extensions": [
           ".eml"
         ],
-        "configuration": "./language-configurations/eml.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "epl",
@@ -123,7 +123,7 @@
         "extensions": [
           ".epl"
         ],
-        "configuration": "./language-configurations/epl.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "flock",
@@ -135,7 +135,7 @@
         "extensions": [
           ".flock"
         ],
-        "configuration": "./language-configurations/flock.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "pinset",
@@ -147,7 +147,7 @@
         "extensions": [
           ".pinset"
         ],
-        "configuration": "./language-configurations/pinset.language-configuration.json"
+        "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
         "id": "emfatic",
