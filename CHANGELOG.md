@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.1
+
+Back-ticks are now an auto-closing pair in the languages that support using them for escaping keywords
+
 ## 1.3.0
 
 Emfatic: Add support for `mapentry` keyword
