@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.4.0
+
+Added `New EGX/EGL Pair` command to create a new EGX file and EGL file with the same name.
+
+- This command is available in the command palette
+- Additionally, the command is available in the file explorer context menu when right clicking on a directory
+  - However this is disabled by default but can be enabled in the settings
+
 ## 1.3.1
 
 Back-ticks are now an auto-closing pair in the languages that support using them for escaping keywords
