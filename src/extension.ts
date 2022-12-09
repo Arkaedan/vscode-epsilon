@@ -5,16 +5,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	// console.log('Congratulations, your extension "vscode-epsilon" is now active!');
 
-	vscode.window.registerTerminalLinkProvider({
+	const subscriptions = context.subscriptions;
+
+	subscriptions.push(vscode.window.registerTerminalLinkProvider({
 		provideTerminalLinks: (context, token) => {
 			
 			// Regular expression that matches Epsilon program locations
-			let regexp = /\(((.*?)@(\d*):(\d*)-(\d*):(\d*))\)/i
+			let regexp = /\(((.*?)@(\d*):(\d*)-(\d*):(\d*))\)/i;
 
 			// Match the line against the regexp
 			let matches = context.line.match(regexp);
 
-			if (matches != null) {
+			if (matches !== null) {
 				let startIndex = context.line.indexOf(matches[1]);
 				let length = matches[1].length;
 				let data = {
@@ -43,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 				// Show the editor
 				vscode.window.showTextDocument(document)).then(x => {
 					let activeEditor = vscode.window.activeTextEditor;
-					if (activeEditor != null) {
+					if (activeEditor !== undefined) {
 						// Find the range to reveal
 						let range = new vscode.Range(new vscode.Position(link.data.startLine - 1, link.data.startColumn), new vscode.Position(link.data.endLine - 1, link.data.endColumn));
 						// Reveal the range
@@ -53,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
 				});
 			},
 		}
-	);
+	));
 }
 
 // this method is called when your extension is deactivated
