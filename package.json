@@ -249,7 +249,33 @@
         "scopeName": "source.epsilon.flexmi.yaml",
         "path": "./syntaxes/flexmi-yaml.tmlanguage"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "epsilon.newEgxEglPair",
+        "title": "New EGX/EGL Pair",
+        "category": "Epsilon"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "epsilon.newEgxEglPair",
+          "when": "explorerResourceIsFolder && config.epsilon.enableNewEgxEglPairContextMenuItem",
+          "group": "navigation@8"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Epsilon",
+      "properties": {
+        "epsilon.enableNewEgxEglPairContextMenuItem": {
+          "description": "Enable the New EGX/EGL Pair command in the Explorer context menu.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

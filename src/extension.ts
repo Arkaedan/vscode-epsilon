@@ -56,7 +56,53 @@ export function activate(context: vscode.ExtensionContext) {
 			},
 		}
 	));
+
+	subscriptions.push(vscode.commands.registerCommand('epsilon.newEgxEglPair', (...args: any[]) => {
+		let folderPath: string | undefined = undefined;
+
+		// If the command was invoked from the explorer context menu,
+		// the first argument should be the selected folder
+		if (args.length > 0 && args[0].hasOwnProperty('path')) {
+			folderPath = args[0].path;
+		}
+		
+		createNewEgxEglPair(folderPath);
+	}));
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
+
+async function createNewEgxEglPair(folderPath: string | undefined): Promise<void> {
+	if (folderPath === undefined) {
+		const prefilledPath = vscode.workspace.workspaceFolders?.[0].uri.fsPath ?? '';
+		folderPath = await vscode.window.showInputBox({
+			title: 'Folder Path',
+			prompt: 'Enter the path to the folder where the new files should be created',
+			value: prefilledPath,
+			valueSelection: [prefilledPath.length, prefilledPath.length],
+		});
+	}
+
+	if (folderPath === undefined) {
+		vscode.window.showErrorMessage('No folder path was provided');
+		return;
+	}
+
+	const fileName = await vscode.window.showInputBox({
+		title: 'File Name',
+		prompt: 'Enter the name of the new files (not including .egx or .egl)',
+	});
+
+	if (fileName === undefined) {
+		vscode.window.showErrorMessage('No file name was provided');
+		return;
+	}
+
+	const egxPath = folderPath + '/' + fileName + '.egx';
+	const eglPath = folderPath + '/' + fileName + '.egl';
+	const egxUri = vscode.Uri.file(egxPath);
+	const eglUri = vscode.Uri.file(eglPath);
+	await vscode.workspace.fs.writeFile(egxUri, new Uint8Array());
+	await vscode.workspace.fs.writeFile(eglUri, new Uint8Array());
+}
