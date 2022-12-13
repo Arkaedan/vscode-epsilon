@@ -261,7 +261,7 @@
       "explorer/context": [
         {
           "command": "epsilon.newEgxEglPair",
-          "when": "explorerResourceIsFolder && config.epsilon.enableNewEgxEglPairContextMenuItem",
+          "when": "config.epsilon.enableNewEgxEglPairContextMenuItem",
           "group": "navigation@8"
         }
       ]
