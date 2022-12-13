@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.4.1
+
+`New EGX/EGL Pair` command now also works for files.
+
+_Reminder: this feature is disabled by default_
+
 ## 1.4.0
 
 Added `New EGX/EGL Pair` command to create a new EGX file and EGL file with the same name.
