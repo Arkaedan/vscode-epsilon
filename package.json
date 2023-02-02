@@ -133,7 +133,7 @@
           "flock"
         ],
         "extensions": [
-          ".flock"
+          ".mig"
         ],
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
