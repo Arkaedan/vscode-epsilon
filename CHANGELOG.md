@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.2
+
+Changed Flock extension from .flock to .mig
+
 ## 1.4.1
 
 `New EGX/EGL Pair` command now also works for files.
