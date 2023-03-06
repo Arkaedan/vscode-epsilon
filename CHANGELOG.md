@@ -2,7 +2,7 @@
 
 ## 1.4.2
 
-Changed Flock extension from .flock to .mig
+Changed Flock extension from `.flock` to `.mig`
 
 ## 1.4.1
 
