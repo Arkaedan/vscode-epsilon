@@ -62,6 +62,15 @@
 				<string>'</string>
 				<key>name</key>
 				<string>string.quoted.single.eol</string>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>match</key>
+						<string>\\['\\nrt]</string>
+						<key>name</key>
+						<string>constant.character.escape.eol</string>
+					</dict>
+				</array>
 			</dict>
 			<dict>
 				<key>begin</key>
@@ -70,6 +79,15 @@
 				<string>"</string>
 				<key>name</key>
 				<string>string.quoted.double.eol</string>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>match</key>
+						<string>\\["\\nrt]</string>
+						<key>name</key>
+						<string>constant.character.escape.eol</string>
+					</dict>
+				</array>
 			</dict>
 			<dict>
 				<key>begin</key>
