@@ -2,7 +2,7 @@
 
 ## 1.4.3
 
-Added highlighting for escape charaters (eg. `\n`) in string literals
+Added highlighting for escape characters (eg. `\n`) in string literals
 
 ## 1.4.2
 
