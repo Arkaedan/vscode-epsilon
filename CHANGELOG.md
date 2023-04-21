@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.3
+
+Added highlighting for escape charaters (eg. `\n`) in string literals
+
 ## 1.4.2
 
 Changed Flock extension from `.flock` to `.mig`
