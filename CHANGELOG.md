@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.4
+
+Fix broken `EOL` syntax highlighting
+
 ## 1.4.3
 
 Added highlighting for escape characters (eg. `\n`) in string literals

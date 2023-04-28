@@ -50,8 +50,7 @@
 			</dict>
 			<dict>
 				<key>match</key>
-				<string>
-					\b(import|driver|alias|if|switch|case|default|operation|function|new|else|for|var|return|async|break|breakAll|and|or|not|xor|implies|ext|in|continue|while|throw|delete|transaction|abort|model|group|as)\b</string>
+				<string>\b(import|driver|alias|if|switch|case|default|operation|function|new|else|for|var|return|async|break|breakAll|and|or|not|xor|implies|ext|in|continue|while|throw|delete|transaction|abort|model|group|as)\b</string>
 				<key>name</key>
 				<string>keyword.control.eol</string>
 			</dict>
@@ -99,8 +98,7 @@
 			</dict>
 			<dict>
 				<key>match</key>
-				<string>
-					\b(String|Boolean|Integer|Real|Any|Map|Collection|Bag|Sequence|Set|OrderedSet|Native|List|Tuple|ConcurrentSet|ConcurrentBag|ConcurrentMap|EolSelf|EolSelfContentType|EolSelfExpressionType|EolSelfCollectionType)\b</string>
+				<string>\b(String|Boolean|Integer|Real|Any|Map|Collection|Bag|Sequence|Set|OrderedSet|Native|List|Tuple|ConcurrentSet|ConcurrentBag|ConcurrentMap|EolSelf|EolSelfContentType|EolSelfExpressionType|EolSelfCollectionType)\b</string>
 				<key>name</key>
 				<string>storage.type.eol</string>
 			</dict>
