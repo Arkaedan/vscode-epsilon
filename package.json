@@ -39,6 +39,10 @@
         "extensions": [
           ".eol"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -51,6 +55,10 @@
         "extensions": [
           ".ecl"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -63,6 +71,10 @@
         "extensions": [
           ".egl"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/egl.language-configuration.json"
       },
       {
@@ -75,6 +87,10 @@
         "extensions": [
           ".egx"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -87,6 +103,10 @@
         "extensions": [
           ".evl"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -99,6 +119,10 @@
         "extensions": [
           ".etl"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -111,6 +135,10 @@
         "extensions": [
           ".eml"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -123,6 +151,10 @@
         "extensions": [
           ".epl"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -135,6 +167,10 @@
         "extensions": [
           ".mig"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
       {
@@ -144,6 +180,10 @@
           "Pinset",
           "pinset"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "extensions": [
           ".pinset"
         ],
@@ -169,6 +209,10 @@
         "extensions": [
           ".flexmi"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
       },
       {
@@ -180,6 +224,10 @@
         "extensions": [
           ".flexmi"
         ],
+        "icon": {
+          "light": "./images/epsilon-logo-sphere.png",
+          "dark": "./images/epsilon-logo-sphere.png"
+        },
         "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
       }
     ],
