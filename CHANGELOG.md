@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.4.5
+
+- Added highlighting for operation/method/function names
+- Added highlighting for properties
+- Added highlighting for escaped identifiers
+
 ## 1.4.4
 
 Fix broken `EOL` syntax highlighting
