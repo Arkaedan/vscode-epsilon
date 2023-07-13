@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.6
+
+Added icons for Epsilon files
+
 ## 1.4.5
 
 - Added highlighting for operation/method/function names
