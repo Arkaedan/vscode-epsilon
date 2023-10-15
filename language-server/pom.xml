@@ -44,7 +44,41 @@
       <groupId>org.eclipse.epsilon</groupId>
       <artifactId>org.eclipse.epsilon.evl.engine</artifactId>
       <version>${epsilon.version}</version>
-    </dependency>    
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.epsilon</groupId>
+      <artifactId>org.eclipse.epsilon.egl.engine</artifactId>
+      <version>${epsilon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.epsilon</groupId>
+      <artifactId>org.eclipse.epsilon.etl.engine</artifactId>
+      <version>${epsilon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.epsilon</groupId>
+      <artifactId>org.eclipse.epsilon.ecl.engine</artifactId>
+      <version>${epsilon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.epsilon</groupId>
+      <artifactId>org.eclipse.epsilon.eml.engine</artifactId>
+      <version>${epsilon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.epsilon</groupId>
+      <artifactId>org.eclipse.epsilon.epl.engine</artifactId>
+      <version>${epsilon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.epsilon</groupId>
+      <artifactId>org.eclipse.epsilon.flock.engine</artifactId>
+      <version>${epsilon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.epsilon</groupId>
+      <artifactId>org.eclipse.epsilon.pinset.engine</artifactId>
+      <version>${epsilon.version}</version>
+    </dependency>
   </dependencies>
-
 </project>

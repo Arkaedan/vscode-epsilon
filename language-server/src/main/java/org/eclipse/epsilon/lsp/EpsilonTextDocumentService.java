@@ -9,8 +9,17 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
+import org.eclipse.epsilon.ecl.EclModule;
+import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
+import org.eclipse.epsilon.egl.EgxModule;
+import org.eclipse.epsilon.eml.EmlModule;
 import org.eclipse.epsilon.eol.EolModule;
+import org.eclipse.epsilon.eol.IEolModule;
+import org.eclipse.epsilon.epl.EplModule;
+import org.eclipse.epsilon.etl.EtlModule;
 import org.eclipse.epsilon.evl.EvlModule;
+import org.eclipse.epsilon.flock.FlockModule;
+import org.eclipse.epsilon.pinset.PinsetModule;
 import org.eclipse.lsp4j.Diagnostic;
 import org.eclipse.lsp4j.DiagnosticSeverity;
 import org.eclipse.lsp4j.DidChangeTextDocumentParams;
@@ -50,7 +59,7 @@ public class EpsilonTextDocumentService implements TextDocumentService {
         // is not provided again in didChange
         uriLanguageMap.put(params.getTextDocument().getUri(), params.getTextDocument().getLanguageId());
 
-        EolModule module = createModule(uriLanguageMap.get(params.getTextDocument().getUri()));
+        IEolModule module = createModule(uriLanguageMap.get(params.getTextDocument().getUri()));
 
         try {
             module.parse(new File(new URI(params.getTextDocument().getUri())));
@@ -62,8 +71,8 @@ public class EpsilonTextDocumentService implements TextDocumentService {
             ex.printStackTrace();
         }
     }
-
-    protected List<Diagnostic> getDiagnostics(EolModule module) {
+    
+    protected List<Diagnostic> getDiagnostics(IEolModule module) {
         List<Diagnostic> diagnostics = new ArrayList<>();
         for (ParseProblem problem : module.getParseProblems()) {
             Diagnostic diagnostic = new Diagnostic();
@@ -79,7 +88,7 @@ public class EpsilonTextDocumentService implements TextDocumentService {
 
     @Override
     public void didChange(DidChangeTextDocumentParams params) {
-        EolModule module = createModule(uriLanguageMap.get(params.getTextDocument().getUri()));
+        IEolModule module = createModule(uriLanguageMap.get(params.getTextDocument().getUri()));
 
         try {
             module.parse(params.getContentChanges().get(0).getText(), new File(new URI(params.getTextDocument().getUri())));
@@ -102,9 +111,17 @@ public class EpsilonTextDocumentService implements TextDocumentService {
 
     }
     
-    protected EolModule createModule(String languageId) {
+    protected IEolModule createModule(String languageId) {
         switch (languageId) {
             case "evl": return new EvlModule();
+            case "etl": return new EtlModule();
+            case "egl": return new EglTemplateFactoryModuleAdapter();
+            case "egx": return new EgxModule();
+            case "ecl": return new EclModule();
+            case "eml": return new EmlModule();
+            case "mig": return new FlockModule();
+            case "pinset": return new PinsetModule();
+            case "epl": return new EplModule();
             default: return new EolModule();
         }
     }

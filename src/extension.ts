@@ -26,14 +26,19 @@ export function activate(context: vscode.ExtensionContext) {
     };
 
     let clientOptions: LanguageClientOptions = {
-        documentSelector: [
-            { scheme: 'file', language: 'eol' },
-            { scheme: 'file', language: 'evl' },
-        ],
+        documentSelector: [ { scheme: 'file' } ],
         synchronize: {
             fileEvents: [
                 workspace.createFileSystemWatcher('**/*.eol'),
                 workspace.createFileSystemWatcher('**/*.evl'),
+				workspace.createFileSystemWatcher('**/*.etl'),
+				workspace.createFileSystemWatcher('**/*.egl'),
+				workspace.createFileSystemWatcher('**/*.egx'),
+				workspace.createFileSystemWatcher('**/*.ecl'),
+				workspace.createFileSystemWatcher('**/*.eml'),
+				workspace.createFileSystemWatcher('**/*.mig'),
+				workspace.createFileSystemWatcher('**/*.pinset'),
+				workspace.createFileSystemWatcher('**/*.epl')
             ]
         },
     };
