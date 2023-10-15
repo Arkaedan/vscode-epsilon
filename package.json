@@ -40,8 +40,8 @@
           ".eol"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/eol.svg",
+          "dark": "./images/eol.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -56,8 +56,8 @@
           ".ecl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/ecl.svg",
+          "dark": "./images/ecl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -72,8 +72,8 @@
           ".egl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/egl.svg",
+          "dark": "./images/egl.svg"
         },
         "configuration": "./language-configurations/egl.language-configuration.json"
       },
@@ -88,8 +88,8 @@
           ".egx"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/egx.svg",
+          "dark": "./images/egx.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -104,8 +104,8 @@
           ".evl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/evl.svg",
+          "dark": "./images/evl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -120,8 +120,8 @@
           ".etl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/etl.svg",
+          "dark": "./images/etl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -136,8 +136,8 @@
           ".eml"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/eml.svg",
+          "dark": "./images/eml.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -152,8 +152,8 @@
           ".epl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/epl.svg",
+          "dark": "./images/epl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -168,8 +168,8 @@
           ".mig"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/flock.svg",
+          "dark": "./images/flock.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -181,8 +181,8 @@
           "pinset"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/pinset.svg",
+          "dark": "./images/pinset.svg"
         },
         "extensions": [
           ".pinset"
@@ -195,6 +195,10 @@
           "Emfatic",
           "emfatic"
         ],
+        "icon": {
+          "light": "./images/emfatic.svg",
+          "dark": "./images/emfatic.svg"
+        },
         "extensions": [
           ".emf"
         ],
@@ -210,8 +214,8 @@
           ".flexmi"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/flexmi-xml.svg",
+          "dark": "./images/flexmi-xml.svg"
         },
         "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
       },
@@ -225,8 +229,8 @@
           ".flexmi"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/flexmi-yaml.svg",
+          "dark": "./images/flexmi-yaml.svg"
         },
         "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
       }

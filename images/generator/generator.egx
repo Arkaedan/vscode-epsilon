@@ -1,0 +1,7 @@
+rule Language2SVG
+    transform l : Language {
+
+    template: "template.egl"
+    
+    target: "../" + l.name + ".svg"
+}

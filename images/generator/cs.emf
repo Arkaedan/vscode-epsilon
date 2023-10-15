@@ -1,0 +1,8 @@
+@namespace(uri="cs", prefix="")
+package cs;
+
+class Language {
+	attr String name;
+	attr String left;
+	attr String right;
+}
