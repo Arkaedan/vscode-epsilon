@@ -1,51 +1,26 @@
 import { TextEncoder } from 'util';
 import * as vscode from 'vscode';
-
+import { ChildProcessWithoutNullStreams, spawn } from 'child_process';
 import * as net from 'net';
 
 import { Trace } from 'vscode-jsonrpc';
 import { workspace, ExtensionContext } from 'vscode';
-import { LanguageClient, LanguageClientOptions, StreamInfo} from 'vscode-languageclient/node';
+import { LanguageClient, LanguageClientOptions, StreamInfo, integer} from 'vscode-languageclient/node';
+import { start } from 'repl';
 
 let client: LanguageClient;
+let languageServerProcess: ChildProcessWithoutNullStreams;
+let languageServerStarted = false;
 
 export function activate(context: vscode.ExtensionContext) {
     
-    // The server is started as a separate app and listens on port 5007
-    let connectionInfo = {
-        port: 5007
-    };
-    let serverOptions = () => {
-        // Connect to language server via socket
-        let socket = net.connect(connectionInfo);
-        let result: StreamInfo = {
-            writer: socket,
-            reader: socket
-        };
-        return Promise.resolve(result);
-    };
-
-    let clientOptions: LanguageClientOptions = {
-        documentSelector: [ { scheme: 'file' } ],
-        synchronize: {
-            fileEvents: [
-                workspace.createFileSystemWatcher('**/*.eol'),
-                workspace.createFileSystemWatcher('**/*.evl'),
-				workspace.createFileSystemWatcher('**/*.etl'),
-				workspace.createFileSystemWatcher('**/*.egl'),
-				workspace.createFileSystemWatcher('**/*.egx'),
-				workspace.createFileSystemWatcher('**/*.ecl'),
-				workspace.createFileSystemWatcher('**/*.eml'),
-				workspace.createFileSystemWatcher('**/*.mig'),
-				workspace.createFileSystemWatcher('**/*.pinset'),
-				workspace.createFileSystemWatcher('**/*.epl')
-            ]
-        },
-    };
-
-    client = new LanguageClient('epsilon', 'Epsilon Editor', serverOptions, clientOptions);
-    client.setTrace(Trace.Verbose);
-    client.start();
+	// Find a free port and start the language server
+	const server = net.createServer();
+        server.listen(0 /* any available port */, () => { 
+			let port = (server.address() as net.AddressInfo).port;
+			startLanguageServer(port);
+			server.close();
+	});
 
 	// This line of code will only be executed once when your extension is activated
 	// console.log('Congratulations, your extension "vscode-epsilon" is now active!');
@@ -117,10 +92,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {
-    if (!client) {
-        return undefined;
-      }
-      return client.stop();
+	if (!client) {
+		return undefined;
+	}
+	return client.stop();
+	languageServerProcess.kill();
 }
 
 async function createNewEgxEglPair(path: string | undefined): Promise<void> {
@@ -181,4 +157,51 @@ async function createNewEgxEglPair(path: string | undefined): Promise<void> {
 function getEgxRule(fileName: string): string {
 	const ruleName = fileName.replace(/[^a-zA-Z0-9]/g, '_');
 	return `rule ${ruleName} {\n\ttemplate: '${fileName}.egl'\n\ttarget: '${fileName}'\n}\n`;
+}
+
+function startLanguageServer(port : integer) {
+	//port = 56295;
+	console.log("Starting the Epsilon Language Server on port "+ port);
+
+	languageServerProcess = spawn("java", ["-jar", "/Users/dk135/git/vscode-epsilon/language-server/target/language-server.jar", "-p", port + ""]);
+	languageServerProcess.stdout?.on('data', data => {
+		
+		// The first time the server produces some text in its standard output
+		// it means that it is alive and ready to accept connections
+		if (languageServerStarted) { return; }
+		else { languageServerStarted = true; }
+
+		let serverOptions = () => {
+			// Connect to language server via socket
+			let socket = net.connect({port : port});
+			let result: StreamInfo = {
+				writer: socket,
+				reader: socket
+			};
+			return Promise.resolve(result);
+		};
+	
+		let clientOptions: LanguageClientOptions = {
+			documentSelector: [ { scheme: 'file' } ],
+			synchronize: {
+				fileEvents: [
+					workspace.createFileSystemWatcher('**/*.eol'),
+					workspace.createFileSystemWatcher('**/*.evl'),
+					workspace.createFileSystemWatcher('**/*.etl'),
+					workspace.createFileSystemWatcher('**/*.egl'),
+					workspace.createFileSystemWatcher('**/*.egx'),
+					workspace.createFileSystemWatcher('**/*.ecl'),
+					workspace.createFileSystemWatcher('**/*.eml'),
+					workspace.createFileSystemWatcher('**/*.mig'),
+					workspace.createFileSystemWatcher('**/*.pinset'),
+					workspace.createFileSystemWatcher('**/*.epl')
+				]
+			},
+		};
+	
+		client = new LanguageClient('epsilon', 'Epsilon Editor', serverOptions, clientOptions);
+		client.setTrace(Trace.Verbose);
+		client.start();
+	});
+	
 }
