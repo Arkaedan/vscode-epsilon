@@ -23,6 +23,40 @@
     <epsilon.version>2.4.0</epsilon.version>
   </properties>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.1.1</version>
+
+        <configuration>
+          <finalName>lsp-server</finalName>
+          <archive>
+              <manifest>
+                  <mainClass>org.eclipse.epsilon.lsp.EpsilonLanguageServer</mainClass>
+              </manifest>
+          </archive>
+          <descriptorRefs>
+              <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+         <appendAssemblyId>false</appendAssemblyId>
+      </configuration>
+        
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+
+      </plugin>
+    </plugins>
+  </build>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -79,6 +113,11 @@
       <groupId>org.eclipse.epsilon</groupId>
       <artifactId>org.eclipse.epsilon.pinset.engine</artifactId>
       <version>${epsilon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jcommander</groupId>
+      <artifactId>jcommander</artifactId>
+      <version>1.83</version>
     </dependency>
   </dependencies>
 </project>

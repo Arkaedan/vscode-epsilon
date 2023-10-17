@@ -26,6 +26,8 @@ import org.eclipse.lsp4j.services.LanguageServer;
 import org.eclipse.lsp4j.services.TextDocumentService;
 import org.eclipse.lsp4j.services.WorkspaceService;
 
+import com.beust.jcommander.JCommander;
+
 public class EpsilonLanguageServer implements LanguageServer {
 
     protected WorkspaceService workspaceService = new EpsilonWorkspaceService();
@@ -34,6 +36,10 @@ public class EpsilonLanguageServer implements LanguageServer {
 
     public static void main(String[] args) throws Exception {
 
+        CommandLineParameters commandLineParameters = new CommandLineParameters();
+        JCommander.newBuilder().addObject(commandLineParameters).build().parse(args);
+        System.out.println("Epsilon LSP Server started on port " + commandLineParameters.port);
+        
         EpsilonLanguageServer languageServer = new EpsilonLanguageServer();
 
         Function<MessageConsumer, MessageConsumer> wrapper = consumer -> {
@@ -49,12 +55,13 @@ public class EpsilonLanguageServer implements LanguageServer {
         };
 
         Launcher<LanguageClient> launcher = createSocketLauncher(languageServer,
-                LanguageClient.class, new InetSocketAddress("localhost", 5007),
+                LanguageClient.class, new InetSocketAddress("localhost", commandLineParameters.port),
                 Executors.newCachedThreadPool(), wrapper);
 
         languageServer.connect(launcher.getRemoteProxy());
         Future<?> future = launcher.startListening();
 
+        
         while (!future.isDone()) {
             Thread.sleep(30_000l);
         }
