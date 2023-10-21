@@ -11,6 +11,7 @@ import { start } from 'repl';
 let client: LanguageClient;
 let languageServerProcess: ChildProcessWithoutNullStreams;
 let languageServerStarted = false;
+let debugLanguageServer = false;
 
 export function activate(context: vscode.ExtensionContext) {
     
@@ -160,10 +161,17 @@ function getEgxRule(fileName: string): string {
 }
 
 function startLanguageServer(port : integer) {
-	//port = 56295;
-	console.log("Starting the Epsilon Language Server on port "+ port);
-
-	languageServerProcess = spawn("java", ["-jar", "/Users/dk135/git/vscode-epsilon/language-server/target/language-server.jar", "-p", port + ""]);
+	
+	// If the debug flag is set to true, we expect that the language server already runs in port 5007
+	if (debugLanguageServer) {
+		port = 5007;
+		languageServerProcess = spawn("echo", ["something"]);
+	}
+	// otherwise we launch it from its jar file
+	else {
+		languageServerProcess = spawn("java", ["-jar", "/Users/dk135/git/vscode-epsilon/language-server/target/language-server.jar", "-p", port + ""]);
+	}
+	
 	languageServerProcess.stdout?.on('data', data => {
 		
 		// The first time the server produces some text in its standard output
