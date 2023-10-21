@@ -6,6 +6,6 @@
     </clipPath>
   </defs>
 
-  <circle cx="200" cy="200" r="150" style="fill: rgb(118, 161, 66); opacity: 40%"/>
-  <circle cx="300" cy="200" r="150" style="fill: rgb(118, 161, 66); clip-path: url(#clipPath); opacity: 60%" />
+  <circle cx="200" cy="200" r="150" style="fill: #89D185; opacity: 60%"/>
+  <circle cx="300" cy="200" r="150" style="fill: #89D185; clip-path: url(#clipPath); opacity: 100%" />
 </svg>

@@ -3,6 +3,6 @@ package cs;
 
 class Language {
 	attr String name;
-	attr String left;
-	attr String right;
+	attr String light;
+	attr String dark;
 }

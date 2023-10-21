@@ -40,8 +40,8 @@
           ".eol"
         ],
         "icon": {
-          "light": "./images/eol.svg",
-          "dark": "./images/eol.svg"
+          "light": "./images/light/eol.svg",
+          "dark": "./images/dark/eol.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -56,8 +56,8 @@
           ".ecl"
         ],
         "icon": {
-          "light": "./images/ecl.svg",
-          "dark": "./images/ecl.svg"
+          "light": "./images/light/ecl.svg",
+          "dark": "./images/dark/ecl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -72,8 +72,8 @@
           ".egl"
         ],
         "icon": {
-          "light": "./images/egl.svg",
-          "dark": "./images/egl.svg"
+          "light": "./images/light/egl.svg",
+          "dark": "./images/dark/egl.svg"
         },
         "configuration": "./language-configurations/egl.language-configuration.json"
       },
@@ -88,8 +88,8 @@
           ".egx"
         ],
         "icon": {
-          "light": "./images/egx.svg",
-          "dark": "./images/egx.svg"
+          "light": "./images/light/egx.svg",
+          "dark": "./images/dark/egx.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -104,8 +104,8 @@
           ".evl"
         ],
         "icon": {
-          "light": "./images/evl.svg",
-          "dark": "./images/evl.svg"
+          "light": "./images/light/evl.svg",
+          "dark": "./images/dark/evl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -120,8 +120,8 @@
           ".etl"
         ],
         "icon": {
-          "light": "./images/etl.svg",
-          "dark": "./images/etl.svg"
+          "light": "./images/light/etl.svg",
+          "dark": "./images/dark/etl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -136,8 +136,8 @@
           ".eml"
         ],
         "icon": {
-          "light": "./images/eml.svg",
-          "dark": "./images/eml.svg"
+          "light": "./images/light/eml.svg",
+          "dark": "./images/dark/eml.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -152,8 +152,8 @@
           ".epl"
         ],
         "icon": {
-          "light": "./images/epl.svg",
-          "dark": "./images/epl.svg"
+          "light": "./images/light/epl.svg",
+          "dark": "./images/dark/epl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -168,8 +168,8 @@
           ".mig"
         ],
         "icon": {
-          "light": "./images/flock.svg",
-          "dark": "./images/flock.svg"
+          "light": "./images/light/flock.svg",
+          "dark": "./images/dark/flock.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -181,8 +181,8 @@
           "pinset"
         ],
         "icon": {
-          "light": "./images/pinset.svg",
-          "dark": "./images/pinset.svg"
+          "light": "./images/light/pinset.svg",
+          "dark": "./images/dark/pinset.svg"
         },
         "extensions": [
           ".pinset"
@@ -196,8 +196,8 @@
           "emfatic"
         ],
         "icon": {
-          "light": "./images/emfatic.svg",
-          "dark": "./images/emfatic.svg"
+          "light": "./images/light/emfatic.svg",
+          "dark": "./images/dark/emfatic.svg"
         },
         "extensions": [
           ".emf"
@@ -214,8 +214,8 @@
           ".flexmi"
         ],
         "icon": {
-          "light": "./images/flexmi-xml.svg",
-          "dark": "./images/flexmi-xml.svg"
+          "light": "./images/light/flexmi-xml.svg",
+          "dark": "./images/dark/flexmi-xml.svg"
         },
         "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
       },
@@ -229,8 +229,8 @@
           ".flexmi"
         ],
         "icon": {
-          "light": "./images/flexmi-yaml.svg",
-          "dark": "./images/flexmi-yaml.svg"
+          "light": "./images/light/flexmi-yaml.svg",
+          "dark": "./images/dark/flexmi.svg"
         },
         "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
       }
