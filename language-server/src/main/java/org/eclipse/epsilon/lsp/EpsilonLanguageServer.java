@@ -6,6 +6,8 @@ import java.net.SocketAddress;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.Channels;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -14,8 +16,10 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 import org.eclipse.lsp4j.InitializeParams;
 import org.eclipse.lsp4j.InitializeResult;
+import org.eclipse.lsp4j.InitializedParams;
 import org.eclipse.lsp4j.ServerCapabilities;
 import org.eclipse.lsp4j.TextDocumentSyncKind;
+import org.eclipse.lsp4j.WorkspaceFolder;
 import org.eclipse.lsp4j.jsonrpc.JsonRpcException;
 import org.eclipse.lsp4j.jsonrpc.Launcher;
 import org.eclipse.lsp4j.jsonrpc.MessageConsumer;
@@ -30,9 +34,10 @@ import com.beust.jcommander.JCommander;
 
 public class EpsilonLanguageServer implements LanguageServer {
 
-    protected WorkspaceService workspaceService = new EpsilonWorkspaceService();
+    protected WorkspaceService workspaceService = new EpsilonWorkspaceService(this);
     protected TextDocumentService textDocumentService = new EpsilonTextDocumentService(this);
     protected LanguageClient client;
+    protected List<WorkspaceFolder> workspaceFolders = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
 
@@ -88,6 +93,7 @@ public class EpsilonLanguageServer implements LanguageServer {
 
     @Override
     public CompletableFuture<InitializeResult> initialize(InitializeParams params) {
+        workspaceFolders.addAll(params.getWorkspaceFolders());
         final InitializeResult res = new InitializeResult(new ServerCapabilities());
 		// res.getCapabilities().setCompletionProvider(new CompletionOptions());
 		res.getCapabilities().setTextDocumentSync(TextDocumentSyncKind.Full);
@@ -115,5 +121,9 @@ public class EpsilonLanguageServer implements LanguageServer {
 
     public LanguageClient getClient() {
         return client;
+    }
+
+    public List<WorkspaceFolder> getWorkspaceFolders() {
+        return workspaceFolders;
     }
 }
