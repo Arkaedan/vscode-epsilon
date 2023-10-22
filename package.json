@@ -205,21 +205,6 @@
         "configuration": "./language-configurations/emfatic.language-configuration.json"
       },
       {
-        "id": "flexmi-xml",
-        "aliases": [
-          "Flexmi (XML)",
-          "flexmi-xml"
-        ],
-        "extensions": [
-          ".flexmi"
-        ],
-        "icon": {
-          "light": "./images/light/flexmi-xml.svg",
-          "dark": "./images/dark/flexmi-xml.svg"
-        },
-        "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
-      },
-      {
         "id": "flexmi-yaml",
         "aliases": [
           "Flexmi (YAML)",
@@ -233,6 +218,21 @@
           "dark": "./images/dark/flexmi.svg"
         },
         "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
+      },
+      {
+        "id": "flexmi-xml",
+        "aliases": [
+          "Flexmi (XML)",
+          "flexmi-xml"
+        ],
+        "extensions": [
+          ".flexmi"
+        ],
+        "icon": {
+          "light": "./images/light/flexmi-xml.svg",
+          "dark": "./images/dark/flexmi-xml.svg"
+        },
+        "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
       }
     ],
     "grammars": [
