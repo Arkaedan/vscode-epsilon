@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const server = net.createServer();
         server.listen(0 /* any available port */, () => { 
 			let port = (server.address() as net.AddressInfo).port;
-			startLanguageServer(port);
+			startLanguageServer(port, context);
 			server.close();
 	});
 
@@ -160,7 +160,7 @@ function getEgxRule(fileName: string): string {
 	return `rule ${ruleName} {\n\ttemplate: '${fileName}.egl'\n\ttarget: '${fileName}'\n}\n`;
 }
 
-function startLanguageServer(port : integer) {
+function startLanguageServer(port : integer, context: vscode.ExtensionContext) {
 	
 	// If the debug flag is set to true, we expect that the language server already runs in port 5007
 	if (debugLanguageServer) {
@@ -169,7 +169,7 @@ function startLanguageServer(port : integer) {
 	}
 	// otherwise we launch it from its jar file
 	else {
-		languageServerProcess = spawn("java", ["-jar", "/Users/dk135/git/vscode-epsilon/language-server/target/language-server.jar", "-p", port + ""]);
+		languageServerProcess = spawn("java", ["-jar", context.asAbsolutePath("language-server/target/language-server.jar"), "-p", port + ""]);
 	}
 	
 	languageServerProcess.stdout?.on('data', data => {
@@ -202,7 +202,9 @@ function startLanguageServer(port : integer) {
 					workspace.createFileSystemWatcher('**/*.eml'),
 					workspace.createFileSystemWatcher('**/*.mig'),
 					workspace.createFileSystemWatcher('**/*.pinset'),
-					workspace.createFileSystemWatcher('**/*.epl')
+					workspace.createFileSystemWatcher('**/*.epl'),
+					workspace.createFileSystemWatcher('**/*.flexmi'),
+					workspace.createFileSystemWatcher('**/*.emf')
 				]
 			},
 		};
