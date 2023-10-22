@@ -160,20 +160,7 @@ public class EpsilonTextDocumentService implements TextDocumentService {
                 // we need to search for all Emfatic files in the workspace and register them 
                 // in the global EPackage registry before attempting to load the flexmi resource
                 // TODO: We should really do this on startup (instead of every time we need to parse a Flexmi file) and then monitor the workspace for relevant (Emfatic) file changes/additions/removals via the EpsilonWorkspaceService to keep the global EPackage registry up to date
-                List<File> emfaticFiles = new ArrayList<>();
-                for (WorkspaceFolder workspaceFolder : languageServer.getWorkspaceFolders()) {
-                    String[] extensions = new String[]{"emf"};
-                    emfaticFiles.addAll(FileUtils.listFiles(new File(URI.create(workspaceFolder.getUri())), extensions, false));
-                }
-
-                for (File emfaticFile : emfaticFiles) {
-                    ResourceSet emfaticResourceSet = new ResourceSetImpl();
-                    emfaticResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("emf", new EmfaticResourceFactory());
-                    EmfaticResource emfaticResource = (EmfaticResource) emfaticResourceSet.createResource(org.eclipse.emf.common.util.URI.createFileURI(emfaticFile.getAbsolutePath()));
-                    emfaticResource.load(null);
-                    EPackage ePackage = (EPackage) emfaticResource.getContents().get(0);
-                    EPackage.Registry.INSTANCE.put(ePackage.getNsURI(), ePackage);
-                }
+                
 
                 // Once we have registered all Emfatic files in the workspace, we can parse the Flexmi model
                 resource.load(new ByteArrayInputStream(code.getBytes()), null);
