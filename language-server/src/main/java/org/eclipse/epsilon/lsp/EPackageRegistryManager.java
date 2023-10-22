@@ -17,11 +17,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfatic.core.EmfaticResourceFactory;
 import org.eclipse.lsp4j.WorkspaceFolder;
 
-/*
- * This class monitors the workspace and keeps EPackage.Registry.Instance up to date
- * with all the Emfatic files in the workspace: it auto-registers all EPackages in Emfatic
- * files that parse correctly and removes EPackages from Emfatic files which do not parse
- * correctly or have been removed from the workspace. 
+/**
+ This class monitors the workspace through <code>EpsilonWorkspaceService</code> and keeps EPackage.Registry.Instance up to date with all the Emfatic files in the workspace. It auto-registers all EPackages in Emfatic files that parse correctly and removes EPackages from Emfatic files which do not parse correctly or have been removed from the workspace. 
  */
 public class EPackageRegistryManager {
 
