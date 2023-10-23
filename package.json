@@ -21,8 +21,8 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "main": "./out/main.js",
-  "browser": "./out/main.js",
+  "main": "./out/extension.js",
+  "browser": "./out/extension.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Arkaedan/vscode-epsilon.git"
@@ -336,7 +336,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
     "test-compile": "tsc -p ./"
