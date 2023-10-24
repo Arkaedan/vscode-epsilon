@@ -4,7 +4,9 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +38,8 @@ import org.eclipse.lsp4j.DidChangeTextDocumentParams;
 import org.eclipse.lsp4j.DidCloseTextDocumentParams;
 import org.eclipse.lsp4j.DidOpenTextDocumentParams;
 import org.eclipse.lsp4j.DidSaveTextDocumentParams;
+import org.eclipse.lsp4j.MessageParams;
+import org.eclipse.lsp4j.MessageType;
 import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.PublishDiagnosticsParams;
 import org.eclipse.lsp4j.Range;
@@ -118,16 +122,15 @@ public class EpsilonTextDocumentService implements TextDocumentService {
 
     public void publishDiagnostics(String code, String uri, String language) {
         IEolModule module = createModule(language);
+        List<Diagnostic> diagnostics = Collections.emptyList();
 
         if (module != null) {
             try {
                 module.parse(code, new File(new URI(uri)));
-                CompletableFuture.runAsync(() -> {
-                    languageServer.getClient().publishDiagnostics(new PublishDiagnosticsParams(uri, getDiagnostics(module)));
-                });
+                diagnostics = getDiagnostics(module);
             }
             catch (Exception ex) {
-                ex.printStackTrace();
+                log(ex);
             }
         }
         else if (language.equals("emfatic")) {
@@ -136,13 +139,10 @@ public class EpsilonTextDocumentService implements TextDocumentService {
                 resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("emf", new EmfaticResourceFactory());
                 EmfaticResource resource = (EmfaticResource) resourceSet.createResource(org.eclipse.emf.common.util.URI.createURI(uri));
                 resource.load(new ByteArrayInputStream(code.getBytes()), null);
-                CompletableFuture.runAsync(() -> {
-                    languageServer.getClient().publishDiagnostics(new PublishDiagnosticsParams(uri, getDiagnostics(resource, code)));
-                });
-                
+                diagnostics = getDiagnostics(resource, code);
             }
             catch (Exception ex) {
-                ex.printStackTrace();
+                log(ex);
             }
         }
         else if (language.startsWith("flexmi-")) {
@@ -150,31 +150,28 @@ public class EpsilonTextDocumentService implements TextDocumentService {
                 ResourceSet resourceSet = new ResourceSetImpl();
                 resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("flexmi", new FlexmiResourceFactory());
                 FlexmiResource resource = (FlexmiResource) resourceSet.createResource(org.eclipse.emf.common.util.URI.createURI(uri));
-
-                // Since we have no way of registering Emfatic files in the LSP server (yet)
-                // we need to search for all Emfatic files in the workspace and register them 
-                // in the global EPackage registry before attempting to load the flexmi resource
-                // TODO: We should really do this on startup (instead of every time we need to parse a Flexmi file) and then monitor the workspace for relevant (Emfatic) file changes/additions/removals via the EpsilonWorkspaceService to keep the global EPackage registry up to date
-                
-
-                // Once we have registered all Emfatic files in the workspace, we can parse the Flexmi model
                 resource.load(new ByteArrayInputStream(code.getBytes()), null);
-                CompletableFuture.runAsync(() -> {
-                    languageServer.getClient().publishDiagnostics(new PublishDiagnosticsParams(uri, getDiagnostics(resource, code)));
-                });
+                diagnostics = getDiagnostics(resource, code);
             }
             catch (FlexmiParseException fex) {
-                
+                Position position = new Position(fex.getLineNumber(), 1);
+                Diagnostic diagnostic = new Diagnostic();
+                diagnostic.setMessage(fex.getMessage());
+                diagnostic.setRange(new Range(position, position));
+                diagnostic.setSeverity(DiagnosticSeverity.Error);
+                diagnostics = Arrays.asList(diagnostic);
             }
             catch (Exception ex) {
-                ex.printStackTrace();
+                log(ex);
             }
         }
-        else {
-            System.out.println("Don't know what to do");
-        }
-    }
 
+        final List<Diagnostic> theDiagnostics = diagnostics;
+        CompletableFuture.runAsync(() -> {
+            languageServer.getClient().publishDiagnostics(new PublishDiagnosticsParams(uri, theDiagnostics));
+        });
+    }
+    
     protected Position getPosition(String code, int offset) {
         int line = 0;
         int column = 0;
@@ -218,6 +215,10 @@ public class EpsilonTextDocumentService implements TextDocumentService {
             case "eol": return new EolModule();
             default: return null;
         }
+    }
+
+    protected void log(Exception ex) {
+        languageServer.getClient().logMessage(new MessageParams(MessageType.Error, ex.getMessage()));
     }
 
 }
