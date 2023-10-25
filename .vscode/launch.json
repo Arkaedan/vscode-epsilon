@@ -6,6 +6,13 @@
 	"version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "EpsilonLanguageServer",
+            "request": "launch",
+            "mainClass": "org.eclipse.epsilon.lsp.EpsilonLanguageServer",
+            "projectName": "org.eclipse.epsilon.lsp"
+        },
+        {
             "name": "Extension",
             "type": "extensionHost",
             "request": "launch",

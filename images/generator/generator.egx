@@ -1,0 +1,19 @@
+rule Language2LightSVG
+    transform l : Language {
+
+    template: "template.egl"
+
+    parameters: Map{"color" = l.light}
+
+    target: "../light/" + l.name + ".svg"
+}
+
+rule Language2DarkSVG
+    transform l : Language {
+
+    template: "template.egl"
+    
+    parameters: Map{"color" = l.dark}
+
+    target: "../dark/" + l.name + ".svg"
+}

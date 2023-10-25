@@ -1,0 +1,7 @@
+import "demo.eol";
+
+context Foo {
+    constraint Bar {
+        check: true
+    }
+}

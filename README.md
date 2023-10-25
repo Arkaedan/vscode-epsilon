@@ -20,3 +20,12 @@ Support is included for the following languages:
 - Flexmi (XML)
 - Flexmi (YAML)
 - Emfatic
+
+## For Extension Developers
+
+To package the extension into a `.vsix`:
+
+- Run `npm run esbuild` to generate `out/extension.js`
+- Run `vcse package` to generate the `.vsix`
+
+To test the `.vsix` you can use a separate instance of [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/). You can either drag and drop the `.vsix` file in the extensions view or use the `Install from VSIX...` command.
