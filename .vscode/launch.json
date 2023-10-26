@@ -20,6 +20,16 @@
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
             "preLaunchTask": "Compile"
-        }
+        },
+        {
+            "name": "Extension (browser)",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "--extensionDevelopmentKind=web",
+            ],
+            "preLaunchTask": "Compile"
+        },
     ]
 }

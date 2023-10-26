@@ -21,8 +21,8 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "main": "./out/extension.js",
-  "browser": "./out/extension.js",
+  "main": "./out/main/extension.js",
+  "browser": "./out/web/extension-browser.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Arkaedan/vscode-epsilon.git"
@@ -331,14 +331,17 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "compile": "npm run esbuild && npm run web-esbuild",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild-base": "esbuild ./src/main/extension.ts --bundle --outfile=out/main/extension.js --external:vscode --format=cjs --platform=node",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "web-esbuild-base": "esbuild ./src/web/extension.ts --bundle --outfile=out/web/extension.js --external:vscode --format=cjs --platform=node",
+    "web-esbuild": "npm run web-esbuild-base -- --sourcemap",
+    "web-esbuild-watch": "npm run web-esbuild-base -- --sourcemap --watch",
     "test-compile": "tsc -p ./"
   },
   "devDependencies": {
