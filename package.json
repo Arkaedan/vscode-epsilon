@@ -3,7 +3,7 @@
   "displayName": "Eclipse Epsilon Languages",
   "description": "Syntax highlighting for the Eclipse Epsilon languages and Emfatic",
   "publisher": "SamHarris",
-  "version": "1.4.6",
+  "version": "2.0.0",
   "icon": "images/epsilon-logo-sphere.png",
   "engines": {
     "vscode": "^1.70.0"
@@ -22,7 +22,7 @@
     "onStartupFinished"
   ],
   "main": "./out/main/extension.js",
-  "browser": "./out/web/extension-browser.js",
+  "browser": "./out/web/extension.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Arkaedan/vscode-epsilon.git"
