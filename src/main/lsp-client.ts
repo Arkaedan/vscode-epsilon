@@ -1,4 +1,4 @@
-import { workspace, ExtensionContext } from "vscode";
+import { workspace, ExtensionContext, window } from "vscode";
 import * as net from "net";
 import {
   LanguageClient,
@@ -32,6 +32,9 @@ export function deactivate() {
 }
 
 function startLanguageServer(port: integer, context: ExtensionContext) {
+  // Check if java is installed and at least version 11
+  checkJavaVersionInstalled(11);
+
   // If the debug flag is set to true, we expect that the language server already runs in port 5007
   if (debugLanguageServer) {
     port = 5007;
@@ -92,5 +95,26 @@ function startLanguageServer(port: integer, context: ExtensionContext) {
     );
     client.setTrace(Trace.Verbose);
     client.start();
+  });
+}
+
+function checkJavaVersionInstalled(requiredVersion: number) {
+  const javaVersionProcess = spawn("java", ["-version"]);
+  javaVersionProcess.stderr.on("data", (data) => {
+    const javaVersionString = data.toString();
+    const javaVersionNumber = javaVersionString
+      .split("\n")[0]
+      .split(" ")[2]
+      .replace(/"/g, "");
+    const javaVersionNumberMajor = parseInt(javaVersionNumber.split(".")[0]);
+    if (javaVersionNumberMajor < requiredVersion) {
+      window.showErrorMessage(
+        "Java 11 or later is required to run the Epsilon language server. Please install Java 11 or later and reload the window."
+      );
+    } else {
+      window.showInformationMessage(
+        `Java ${javaVersionNumberMajor} detected. The Epsilon language server will be started.`
+      );
+    }
   });
 }
