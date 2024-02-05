@@ -6,7 +6,7 @@
   "version": "2.0.0",
   "icon": "images/epsilon-logo-sphere.png",
   "engines": {
-    "vscode": "^1.70.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Programming Languages"
@@ -17,9 +17,6 @@
     "emfatic",
     "emf",
     "mde"
-  ],
-  "activationEvents": [
-    "onStartupFinished"
   ],
   "main": "./out/main/extension.js",
   "browser": "./out/web/extension.js",
