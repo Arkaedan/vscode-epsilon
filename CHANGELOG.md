@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.0.0
+
+- Add langauge server which will highlight syntax errors (thanks [Dimitris](https://github.com/kolovos))
+- Add placeholder icons while new ones are being worked on
+
 ## 1.4.6
 
 Added icons for Epsilon files

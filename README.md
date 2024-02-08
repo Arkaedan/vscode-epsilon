@@ -1,12 +1,13 @@
 # Eclipse Epsilon Languages Extension
 
-Syntax highlighting for the Eclipse Epsilon languages and Emfatic. 
+Syntax highlighting and basic language server for the Eclipse Epsilon languages and Emfatic.
 
-Adapted from the Epsilon extension for Sublime in the Epsilon Labs project: [https://github.com/epsilonlabs/sublime](https://github.com/epsilonlabs/sublime)
+Initially adapted from the Epsilon extension for Sublime in the Epsilon Labs project: [https://github.com/epsilonlabs/sublime](https://github.com/epsilonlabs/sublime)
 
 ## Features
 
 Support is included for the following languages:
+
 - Epsilon Object Language (EOL)
 - Epsilon Comparison Language (ECL)
 - Epsilon Generation Language (EGL)
@@ -25,7 +26,8 @@ Support is included for the following languages:
 
 To package the extension into a `.vsix`:
 
-- Run `npm run esbuild` to generate `out/extension.js`
+- Run `mvn package` in the "language-server" folder to generate `language-server/target/language-server.jar`
+- Run `npm run compile` to generate `out/main/extension.js` and `out/web/extension.js`
 - Run `vcse package` to generate the `.vsix`
 
 To test the `.vsix` you can use a separate instance of [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/). You can either drag and drop the `.vsix` file in the extensions view or use the `Install from VSIX...` command.
