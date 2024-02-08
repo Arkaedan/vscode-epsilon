@@ -9,6 +9,7 @@ package-lock.json
 tsconfig.json
 .eslintrc.js
 src/
+workspace/
 
 # LSP Server
 language-server/
