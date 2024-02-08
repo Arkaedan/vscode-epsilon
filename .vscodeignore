@@ -1,4 +1,16 @@
-.vscode/**
-.vscode-test/**
+.vscode
+.vscode-test
+.github
 .gitignore
+.gitattributes
 vsc-extension-quickstart.md
+node_modules
+package-lock.json
+tsconfig.json
+.eslintrc.js
+src/
+workspace/
+
+# LSP Server
+language-server/
+!language-server/target/language-server.jar

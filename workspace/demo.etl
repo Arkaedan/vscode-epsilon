@@ -1,0 +1,6 @@
+rule X
+    transform x : Y 
+    to y : Y {
+
+    var x : String;
+}

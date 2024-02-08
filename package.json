@@ -3,10 +3,10 @@
   "displayName": "Eclipse Epsilon Languages",
   "description": "Syntax highlighting for the Eclipse Epsilon languages and Emfatic",
   "publisher": "SamHarris",
-  "version": "1.4.6",
+  "version": "2.0.0",
   "icon": "images/epsilon-logo-sphere.png",
   "engines": {
-    "vscode": "^1.70.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Programming Languages"
@@ -18,11 +18,8 @@
     "emf",
     "mde"
   ],
-  "activationEvents": [
-    "onStartupFinished"
-  ],
-  "main": "./out/extension.js",
-  "browser": "./out/extension.js",
+  "main": "./out/main/extension.js",
+  "browser": "./out/web/extension.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Arkaedan/vscode-epsilon.git"
@@ -40,8 +37,8 @@
           ".eol"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/eol.svg",
+          "dark": "./images/dark/eol.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -56,8 +53,8 @@
           ".ecl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/ecl.svg",
+          "dark": "./images/dark/ecl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -72,8 +69,8 @@
           ".egl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/egl.svg",
+          "dark": "./images/dark/egl.svg"
         },
         "configuration": "./language-configurations/egl.language-configuration.json"
       },
@@ -88,8 +85,8 @@
           ".egx"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/egx.svg",
+          "dark": "./images/dark/egx.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -104,8 +101,8 @@
           ".evl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/evl.svg",
+          "dark": "./images/dark/evl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -120,8 +117,8 @@
           ".etl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/etl.svg",
+          "dark": "./images/dark/etl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -136,8 +133,8 @@
           ".eml"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/eml.svg",
+          "dark": "./images/dark/eml.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -152,8 +149,8 @@
           ".epl"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/epl.svg",
+          "dark": "./images/dark/epl.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -168,8 +165,8 @@
           ".mig"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/flock.svg",
+          "dark": "./images/dark/flock.svg"
         },
         "configuration": "./language-configurations/eol.language-configuration.json"
       },
@@ -181,8 +178,8 @@
           "pinset"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/pinset.svg",
+          "dark": "./images/dark/pinset.svg"
         },
         "extensions": [
           ".pinset"
@@ -195,25 +192,14 @@
           "Emfatic",
           "emfatic"
         ],
+        "icon": {
+          "light": "./images/light/emfatic.svg",
+          "dark": "./images/dark/emfatic.svg"
+        },
         "extensions": [
           ".emf"
         ],
         "configuration": "./language-configurations/emfatic.language-configuration.json"
-      },
-      {
-        "id": "flexmi-xml",
-        "aliases": [
-          "Flexmi (XML)",
-          "flexmi-xml"
-        ],
-        "extensions": [
-          ".flexmi"
-        ],
-        "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
-        },
-        "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
       },
       {
         "id": "flexmi-yaml",
@@ -225,10 +211,25 @@
           ".flexmi"
         ],
         "icon": {
-          "light": "./images/epsilon-logo-sphere.png",
-          "dark": "./images/epsilon-logo-sphere.png"
+          "light": "./images/light/flexmi-yaml.svg",
+          "dark": "./images/dark/flexmi.svg"
         },
         "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
+      },
+      {
+        "id": "flexmi-xml",
+        "aliases": [
+          "Flexmi (XML)",
+          "flexmi-xml"
+        ],
+        "extensions": [
+          ".flexmi"
+        ],
+        "icon": {
+          "light": "./images/light/flexmi-xml.svg",
+          "dark": "./images/dark/flexmi-xml.svg"
+        },
+        "configuration": "./language-configurations/flexmi-xml.language-configuration.json"
       }
     ],
     "grammars": [
@@ -327,23 +328,33 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "compile": "npm run esbuild && npm run web-esbuild",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "esbuild-base": "esbuild ./src/main/extension.ts --bundle --outfile=out/main/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "web-esbuild-base": "esbuild ./src/web/extension.ts --bundle --outfile=out/web/extension.js --external:vscode --format=cjs --platform=node",
+    "web-esbuild": "npm run web-esbuild-base -- --sourcemap",
+    "web-esbuild-watch": "npm run web-esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./"
   },
   "devDependencies": {
-    "@types/vscode": "^1.50.0",
     "@types/glob": "^7.1.3",
     "@types/mocha": "^8.0.0",
     "@types/node": "^12.11.7",
-    "eslint": "^7.9.0",
+    "@types/vscode": "^1.50.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "esbuild": "^0.19.5",
+    "eslint": "^7.9.0",
     "glob": "^7.1.6",
     "mocha": "^8.1.3",
     "typescript": "^4.0.2",
+    "vscode-jsonrpc": "^8.2.0",
+    "vscode-languageclient": "^9.0.1",
     "vscode-test": "^1.4.0"
   }
 }
