@@ -212,7 +212,7 @@
         ],
         "icon": {
           "light": "./images/light/flexmi-yaml.svg",
-          "dark": "./images/dark/flexmi.svg"
+          "dark": "./images/dark/flexmi-yaml.svg"
         },
         "configuration": "./language-configurations/flexmi-yaml.language-configuration.json"
       },
@@ -355,6 +355,7 @@
     "typescript": "^4.0.2",
     "vscode-jsonrpc": "^8.2.0",
     "vscode-languageclient": "^9.0.1",
-    "vscode-test": "^1.4.0"
+    "@vscode/test-electron": "^2.3.9",
+    "@vscode/test-web": "^0.0.51"
   }
 }
