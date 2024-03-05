@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.1.0
+
+- Use new icons created specifically for Epsilon in VS Code
+  - Huge thank you to [Kaila Ababao](https://www.linkedin.com/in/kaila-ababao/) for creating these icons
+
 ## 2.0.0
 
 - Add langauge server which will highlight syntax errors (thanks [Dimitris](https://github.com/kolovos))
