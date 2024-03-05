@@ -1,11 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
   <defs>
-    <clipPath id="clipPath">
-        <circle cx="200" cy="200" r="150" />
-    </clipPath>
-  </defs>
+    <style>
+      .cls-1 {
+        fill: #4f86b4;
+      }
 
-  <circle cx="200" cy="200" r="150" style="fill: #007ACC; opacity: 60%"/>
-  <circle cx="300" cy="200" r="150" style="fill: #007ACC; clip-path: url(#clipPath); opacity: 100%" />
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #58595b;
+      }
+    </style>
+  </defs>
+  <path class="cls-2" d="M2,2h7.19l1.4,1.41,1.41,1.4v2.19h1v-2.6c-1.33-1.33-2.07-2.07-3.4-3.4H1.5l-.5.5v13l.5.5h5.5v-1H2V2Z"/>
+  <polygon class="cls-1" points="15 11.65 7.86 11.65 7.86 12.5 10.36 15 11.08 14.3 9.43 12.65 15 12.65 15 11.65"/>
+  <polygon class="cls-1" points="5.72 11 12.86 11 12.86 10.15 10.36 7.65 9.64 8.35 11.29 10 5.72 10 5.72 11"/>
 </svg>

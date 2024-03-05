@@ -1,11 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
   <defs>
-    <clipPath id="clipPath">
-        <circle cx="200" cy="200" r="150" />
-    </clipPath>
-  </defs>
+    <style>
+      .cls-1 {
+        fill: #fde321;
+      }
 
-  <circle cx="200" cy="200" r="150" style="fill: #FFCC00; opacity: 60%"/>
-  <circle cx="300" cy="200" r="150" style="fill: #FFCC00; clip-path: url(#clipPath); opacity: 100%" />
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path class="cls-2" d="M2,2h7.19l1.4,1.41,1.41,1.4v2.19h1v-2.6c-1.33-1.33-2.07-2.07-3.4-3.4H1.5l-.5.5v13l.5.5h5.5v-1H2V2Z"/>
+  <path class="cls-1" d="M13.41,10.25c-.14-.24-.32-.44-.52-.61l.66-1.13-.87-.5-.66,1.14c-.5-.17-1.06-.19-1.58-.01l-.65-1.13-.87.5.65,1.13c-.41.37-.67.85-.78,1.37h-1.32s0,1,0,1h1.31c.06.25.13.5.27.75s.32.44.52.61l-.66,1.13.87.5.66-1.14c.5.17,1.06.19,1.58.01l.65,1.13.87-.5-.65-1.13c.41-.37.67-.85.78-1.37h1.32s0-1,0-1h-1.31c-.06-.25-.13-.5-.27-.75ZM12,12.8c-.72.41-1.63.17-2.05-.55-.41-.72-.17-1.63.55-2.05.72-.42,1.63-.17,2.05.55.41.72.17,1.63-.55,2.05Z"/>
 </svg>

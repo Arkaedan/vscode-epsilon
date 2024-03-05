@@ -1,6 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-  <rect x="60" y="60" width="280" height="280" style="fill:#652D90;opacity:100%"/>
-  <line x1="200" x2="200" y1="10" y2="390" style="stroke:#652D90; stroke-width:28;opacity:80%"/>
-  <line y1="200" y2="200" x1="10" x2="390" style="stroke:#652D90; stroke-width:28;opacity:80%"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #58595b;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #a8779f;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M2,2h7.19l1.4,1.41,1.41,1.4v1.19h1v-1.6c-1.33-1.33-2.07-2.07-3.4-3.4H1.5l-.5.5v13l.5.5h5.5v-1H2V2Z"/>
+  <path class="cls-2" d="M15,10.5h-.83v-2.17l-.5-.5h-2.17v-.83h-1v.83h-2.17l-.5.5v2.17h-.83v1h.83v2.17l.5.5h2.17v.83h1v-.83h2.17l.5-.5v-2.17h.83v-1ZM13.17,8.83v1.67h-1.67v-1.67h1.67ZM8.83,8.83h1.67v1.67h-1.67v-1.67ZM8.83,13.17v-1.67h1.67v1.67h-1.67ZM13.17,13.17h-1.67v-1.67h1.67v1.67Z"/>
 </svg>
