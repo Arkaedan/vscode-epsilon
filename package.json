@@ -24,6 +24,20 @@
     "type": "git",
     "url": "https://github.com/Arkaedan/vscode-epsilon.git"
   },
+  "activationEvents": [
+    "workspaceContains:**/*.eol",
+    "workspaceContains:**/*.ecl",
+    "workspaceContains:**/*.egl",
+    "workspaceContains:**/*.egx",
+    "workspaceContains:**/*.evl",
+    "workspaceContains:**/*.etl",
+    "workspaceContains:**/*.eml",
+    "workspaceContains:**/*.epl",
+    "workspaceContains:**/*.mig",
+    "workspaceContains:**/*.pinset",
+    "workspaceContains:**/*.emf",
+    "workspaceContains:**/*.flexmi"
+  ],
   "contributes": {
     "languages": [
       {
@@ -324,7 +338,110 @@
           "default": false
         }
       }
-    }
+    },
+    "breakpoints": [
+      {
+        "language": "eol"
+      },
+      {
+        "language": "ecl"
+      },
+      {
+        "language": "egl"
+      },
+      {
+        "language": "egx"
+      },
+      {
+        "language": "evl"
+      },
+      {
+        "language": "etl"
+      },
+      {
+        "language": "eml"
+      },
+      {
+        "language": "epl"
+      },
+      {
+        "language": "flock"
+      },
+      {
+        "language": "pinset"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "epsilon",
+        "languages": [
+          "eol",
+          "ecl",
+          "egl",
+          "egx",
+          "evl",
+          "etl",
+          "eml",
+          "epl",
+          "flock",
+          "pinset"
+        ],
+        "label": "Epsilon Debug",
+        "configurationAttributes": {
+          "attach": {
+            "required": [
+              "port"
+            ],
+            "properties": {
+              "port": {
+                "type": "integer",
+                "description": "Port to connect to"
+              }
+            }
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "epsilon",
+            "request": "attach",
+            "name": "Attach to Epsilon script",
+            "port": 4040
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "Epsilon: Attach",
+            "description": "A new configuration for attaching to a running Epsilon script.",
+            "body": {
+              "type": "epsilon",
+              "request": "attach",
+              "name": "Attach to Epsilon script",
+              "port": 4040
+            }
+          }
+        ]
+      }
+    ],
+    "problemMatchers": [
+      {
+        "owner": "epsilon-debug",
+        "name": "epsilon-debug",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^.*(FAILURE):\\s*(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Started Epsilon debug server"
+        }
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -348,6 +465,7 @@
     "@types/vscode": "^1.50.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "@vscode/debugprotocol": "^1.65.0",
     "esbuild": "^0.19.5",
     "eslint": "^7.9.0",
     "glob": "^7.1.6",
