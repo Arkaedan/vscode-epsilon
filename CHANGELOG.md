@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.0
+
+- Add debugging support for Epsilon (must be used with Epsilon 2.6) (Thanks [Antonio](https://github.com/agarciadom))
+
 ## 2.1.0
 
 - Use new icons created specifically for Epsilon in VS Code
