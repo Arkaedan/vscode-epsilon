@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.2.1
+
+- Debugging improvements
+- Bump Emfatic to version 1.1.0
+
+(Thanks [Antonio](https://github.com/agarciadom))
+
 ## 2.2.0
 
 - Add debugging support for Epsilon (must be used with Epsilon 2.6) (Thanks [Antonio](https://github.com/agarciadom))
