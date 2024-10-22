@@ -396,6 +396,11 @@
               "port": {
                 "type": "integer",
                 "description": "Port to connect to"
+              },
+              "stop-at-every-statement": {
+                "type": "boolean",
+                "description": "If true, line breakpoints will stop at every statement on their line.",
+                "default": false
               }
             }
           }
