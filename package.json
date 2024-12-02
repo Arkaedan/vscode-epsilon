@@ -160,7 +160,8 @@
           "epl"
         ],
         "extensions": [
-          ".epl"
+          ".epl",
+          ".emg"
         ],
         "icon": {
           "light": "./images/light/epl.svg",
