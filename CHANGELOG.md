@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.3.0
+
+- Upgrade to Epsilon 2.6.0
+- Add `.emg` as an alternative extension for the EPL language (Thanks [Antonio](https://github.com/agarciadom))
+
 ## 2.2.1
 
 - Debugging improvements
