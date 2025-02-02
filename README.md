@@ -28,6 +28,6 @@ To package the extension into a `.vsix`:
 
 - Run `mvn package` in the "language-server" folder to generate `language-server/target/language-server.jar`
 - Run `npm run compile` to generate `out/main/extension.js` and `out/web/extension.js`
-- Run `vcse package` to generate the `.vsix`
+- Run `vsce package` to generate the `.vsix`
 
 To test the `.vsix` you can use a separate instance of [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/). You can either drag and drop the `.vsix` file in the extensions view or use the `Install from VSIX...` command.
