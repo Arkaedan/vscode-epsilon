@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.1
+
+- Upgrade to Epsilon 2.8.0
+
 ## 2.3.0
 
 - Upgrade to Epsilon 2.6.0
