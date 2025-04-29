@@ -17,7 +17,7 @@ import org.eclipse.emf.emfatic.core.EmfaticResource;
 import org.eclipse.emf.emfatic.core.EmfaticResourceFactory;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.ecl.EclModule;
-import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
+import org.eclipse.epsilon.egl.EglModule;
 import org.eclipse.epsilon.egl.EgxModule;
 import org.eclipse.epsilon.eml.EmlModule;
 import org.eclipse.epsilon.eol.EolModule;
@@ -205,7 +205,7 @@ public class EpsilonTextDocumentService implements TextDocumentService {
         switch (languageId) {
             case "evl": return new EvlModule();
             case "etl": return new EtlModule();
-            case "egl": return new EglTemplateFactoryModuleAdapter();
+            case "egl": return new EglModule();
             case "egx": return new EgxModule();
             case "ecl": return new EclModule();
             case "eml": return new EmlModule();
