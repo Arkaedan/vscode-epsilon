@@ -24,11 +24,13 @@ export function activate(context: ExtensionContext) {
   });
 }
 
-export function deactivate() {
-  if (!client) {
-    return undefined;
+export async function deactivate() {
+  if (client) {
+    await client.stop();
   }
-  return client.stop();
+  if (languageServerProcess) {
+    languageServerProcess.kill();
+  }
 }
 
 function startLanguageServer(port: integer, context: ExtensionContext) {
@@ -37,8 +39,10 @@ function startLanguageServer(port: integer, context: ExtensionContext) {
 
   // If the debug flag is set to true, we expect that the language server already runs in port 5007
   if (debugLanguageServer) {
+    window.showInformationMessage(
+      "Debugging mode enabled. The language server is expected to be running on port 5007.");
     port = 5007;
-    languageServerProcess = spawn("echo", ["something"]);
+    startLanguageClient(port);
   }
   // otherwise we launch it from its jar file
   else {
@@ -46,9 +50,13 @@ function startLanguageServer(port: integer, context: ExtensionContext) {
       "language-server/target/language-server.jar"
     );
     languageServerProcess = spawn("java", ["-jar", jarPath, "-p", port + ""]);
+    languageServerProcess.stdout?.on("data", (data) => {
+      startLanguageClient(port);
+    });
   }
+}
 
-  languageServerProcess.stdout?.on("data", (data) => {
+function startLanguageClient(port: integer) {
     // The first time the server produces some text in its standard output
     // it means that it is alive and ready to accept connections
     if (languageServerStarted) {
@@ -95,7 +103,6 @@ function startLanguageServer(port: integer, context: ExtensionContext) {
     );
     client.setTrace(Trace.Verbose);
     client.start();
-  });
 }
 
 function checkJavaVersionInstalled(requiredVersion: number) {

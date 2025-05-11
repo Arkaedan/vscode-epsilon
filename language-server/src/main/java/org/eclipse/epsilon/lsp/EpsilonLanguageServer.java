@@ -93,6 +93,7 @@ public class EpsilonLanguageServer implements LanguageServer {
         if (params.getWorkspaceFolders() != null) ePackageRegistryManager.initialize(params.getWorkspaceFolders());
         final InitializeResult res = new InitializeResult(new ServerCapabilities());
 		res.getCapabilities().setTextDocumentSync(TextDocumentSyncKind.Full);
+        res.getCapabilities().setDefinitionProvider(true);
 		return CompletableFuture.supplyAsync(() -> res);
     }
 

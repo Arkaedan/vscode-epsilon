@@ -1,0 +1,3 @@
+operation foo() {
+    "Hello world".println();
+}

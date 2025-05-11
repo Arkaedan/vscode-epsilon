@@ -15,13 +15,17 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfatic.core.EmfaticResource;
 import org.eclipse.emf.emfatic.core.EmfaticResourceFactory;
+import org.eclipse.epsilon.common.module.ModuleElement;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
+import org.eclipse.epsilon.common.parse.Region;
 import org.eclipse.epsilon.ecl.EclModule;
 import org.eclipse.epsilon.egl.EglModule;
 import org.eclipse.epsilon.egl.EgxModule;
 import org.eclipse.epsilon.eml.EmlModule;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.IEolModule;
+import org.eclipse.epsilon.eol.dom.Operation;
+import org.eclipse.epsilon.eol.dom.OperationCallExpression;
 import org.eclipse.epsilon.epl.EplModule;
 import org.eclipse.epsilon.etl.EtlModule;
 import org.eclipse.epsilon.evl.EvlModule;
@@ -32,23 +36,28 @@ import org.eclipse.epsilon.flock.FlockModule;
 import org.eclipse.epsilon.pinset.PinsetModule;
 import org.eclipse.gymnast.runtime.core.parser.ParseError;
 import org.eclipse.gymnast.runtime.core.parser.ParseMessage;
+import org.eclipse.lsp4j.DefinitionParams;
 import org.eclipse.lsp4j.Diagnostic;
 import org.eclipse.lsp4j.DiagnosticSeverity;
 import org.eclipse.lsp4j.DidChangeTextDocumentParams;
 import org.eclipse.lsp4j.DidCloseTextDocumentParams;
 import org.eclipse.lsp4j.DidOpenTextDocumentParams;
 import org.eclipse.lsp4j.DidSaveTextDocumentParams;
+import org.eclipse.lsp4j.Location;
+import org.eclipse.lsp4j.LocationLink;
 import org.eclipse.lsp4j.MessageParams;
 import org.eclipse.lsp4j.MessageType;
 import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.PublishDiagnosticsParams;
 import org.eclipse.lsp4j.Range;
+import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.eclipse.lsp4j.services.TextDocumentService;
 
 public class EpsilonTextDocumentService implements TextDocumentService {
 
     protected EpsilonLanguageServer languageServer;
     protected Map<String, String> uriLanguageMap = new HashMap<>();
+    protected Map<String, IEolModule> uriModuleMap = new HashMap<>();
     
     public EpsilonTextDocumentService(EpsilonLanguageServer languageServer) {
         this.languageServer = languageServer;
@@ -128,6 +137,8 @@ public class EpsilonTextDocumentService implements TextDocumentService {
             try {
                 module.parse(code, new File(new URI(uri)));
                 diagnostics = getDiagnostics(module);
+                // Cache the module for later use
+                uriModuleMap.put(uri, module);
             }
             catch (Exception ex) {
                 log(ex);
@@ -219,6 +230,67 @@ public class EpsilonTextDocumentService implements TextDocumentService {
 
     protected void log(Exception ex) {
         languageServer.getClient().logMessage(new MessageParams(MessageType.Error, ex.getMessage()));
+    }
+
+    @Override
+    public CompletableFuture<Either<List<? extends Location>, List<? extends LocationLink>>> definition(DefinitionParams params) {
+		var position = params.getPosition();
+        var uri = params.getTextDocument().getUri();
+        var module = uriModuleMap.get(uri);
+        if (module == null) {
+            // Module not found, return empty list
+            return CompletableFuture.completedFuture(Either.forLeft(Collections.emptyList()));
+        }
+        var element = getElementAtPosition(module, position);
+        if (element instanceof OperationCallExpression) {
+            var operationCall = (OperationCallExpression) element;
+            var operationName = operationCall.getName();
+            var availableOperations = module.getOperations();
+            var foundOperations = new ArrayList<Operation>();
+            for (Operation operation : availableOperations) {
+                if (operation.getName().equals(operationName)) {
+                    foundOperations.add(operation);
+                }
+            }
+            var foundOperationLocations = new ArrayList<Location>();
+            for (Operation operation : foundOperations) {
+                var location = new Location();
+                location.setUri(operation.getModule().getUri().toString());
+                location.setRange(new Range(
+                        new Position(operation.getRegion().getStart().getLine() - 1, operation.getRegion().getStart().getColumn()),
+                        new Position(operation.getRegion().getEnd().getLine() - 1, operation.getRegion().getEnd().getColumn())));
+                foundOperationLocations.add(location);
+            }
+            return CompletableFuture.completedFuture(Either.forLeft(foundOperationLocations));
+        }
+        return CompletableFuture.completedFuture(Either.forLeft(Collections.emptyList()));
+	}
+
+    protected boolean regionContainsPosition(Region region, Position position) {
+        var start = region.getStart();
+        var end = region.getEnd();
+        // Position uses zero-based indexing, but Regions use one-based indexing
+        var positionLine = position.getLine() + 1;
+        var positionChar = position.getCharacter() + 1;
+        if (positionLine < start.getLine() || positionLine > end.getLine()) {
+            return false;
+        }
+        if (positionLine == start.getLine()) {
+            return positionChar >= start.getColumn();
+        }
+        if (positionLine == end.getLine()) {
+            return positionChar <= end.getColumn();
+        }
+        return true;
+    }
+
+    protected ModuleElement getElementAtPosition(ModuleElement parent, Position position) {
+        for (ModuleElement child : parent.getChildren()) {
+            if (regionContainsPosition(child.getRegion(), position)) {
+                return getElementAtPosition(child, position);
+            }
+        }
+        return parent;
     }
 
 }
