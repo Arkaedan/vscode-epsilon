@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.0
+
+- Basic `Go to Definition` support for operations
+
 ## 2.3.1
 
 - Upgrade to Epsilon 2.8.0
