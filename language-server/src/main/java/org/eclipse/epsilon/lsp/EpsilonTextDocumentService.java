@@ -24,6 +24,7 @@ import org.eclipse.epsilon.egl.EgxModule;
 import org.eclipse.epsilon.eml.EmlModule;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.IEolModule;
+import org.eclipse.epsilon.eol.dom.NameExpression;
 import org.eclipse.epsilon.eol.dom.Operation;
 import org.eclipse.epsilon.eol.dom.OperationCallExpression;
 import org.eclipse.epsilon.epl.EplModule;
@@ -242,6 +243,9 @@ public class EpsilonTextDocumentService implements TextDocumentService {
             return CompletableFuture.completedFuture(Either.forLeft(Collections.emptyList()));
         }
         var element = getElementAtPosition(module, position);
+        if (element instanceof NameExpression) {
+            element = element.getParent();
+        }
         if (element instanceof OperationCallExpression) {
             var operationCall = (OperationCallExpression) element;
             var operationName = operationCall.getName();
