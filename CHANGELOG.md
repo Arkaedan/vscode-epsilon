@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.1
+
+- Fix: `Go to Definition` not working for operations called on object instances
+
 ## 2.4.0
 
 - Basic `Go to Definition` support for operations
