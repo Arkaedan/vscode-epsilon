@@ -242,7 +242,8 @@ public class EpsilonTextDocumentService implements TextDocumentService {
             // Module not found, return empty list
             return CompletableFuture.completedFuture(Either.forLeft(Collections.emptyList()));
         }
-        var element = getElementAtPosition(module, position);
+        boolean isEGL = module instanceof EglModule;
+        var element = getElementAtPosition(module, position, isEGL);
         if (element instanceof NameExpression) {
             element = element.getParent();
         }
@@ -277,7 +278,13 @@ public class EpsilonTextDocumentService implements TextDocumentService {
         var positionLine = position.getLine() + 1;
         var positionChar = position.getCharacter() + 1;
         if (positionLine < start.getLine() || positionLine > end.getLine()) {
+            // position is before or after the region
             return false;
+        }
+        if (start.getLine() == end.getLine()) {
+            // region exists as a section of a single line,
+            // and position must also be on this line due to failing previous if
+            return positionChar >= start.getColumn() && positionChar <= end.getColumn();
         }
         if (positionLine == start.getLine()) {
             return positionChar >= start.getColumn();
@@ -288,10 +295,18 @@ public class EpsilonTextDocumentService implements TextDocumentService {
         return true;
     }
 
-    protected ModuleElement getElementAtPosition(ModuleElement parent, Position position) {
+    protected ModuleElement getElementAtPosition(ModuleElement parent, Position position, boolean isEGL) {
         for (ModuleElement child : parent.getChildren()) {
             if (regionContainsPosition(child.getRegion(), position)) {
-                return getElementAtPosition(child, position);
+                // Special case handling for EGL as there can be overlapping elements
+                if (isEGL && child instanceof NameExpression) {
+                    var nameExpression = (NameExpression) child;
+                    var name = nameExpression.getName();
+                    if (name.equals("out") || name.equals("printdyn")) {
+                        continue; // Skip this element
+                    }
+                }
+                return getElementAtPosition(child, position, isEGL);
             }
         }
         return parent;

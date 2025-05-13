@@ -1,1 +1,21 @@
 [%="Hello"%]
+[%=baz()%]
+
+[%
+@template
+operation baz() { %]
+Hello
+[% } %]
+
+[%
+@template
+operation Integer bar() { %]
+Hello
+[% } %]
+
+[%
+@template
+operation foo() { %]
+[%=baz()%]
+[%= 5.bar() %]
+[% } %]
