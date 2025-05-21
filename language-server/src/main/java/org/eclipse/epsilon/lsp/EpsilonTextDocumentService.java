@@ -24,6 +24,7 @@ import org.eclipse.epsilon.egl.EgxModule;
 import org.eclipse.epsilon.eml.EmlModule;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.IEolModule;
+import org.eclipse.epsilon.eol.dom.ExpressionStatement;
 import org.eclipse.epsilon.eol.dom.NameExpression;
 import org.eclipse.epsilon.eol.dom.Operation;
 import org.eclipse.epsilon.eol.dom.OperationCallExpression;
@@ -298,18 +299,36 @@ public class EpsilonTextDocumentService implements TextDocumentService {
     protected ModuleElement getElementAtPosition(ModuleElement parent, Position position, boolean isEGL) {
         for (ModuleElement child : parent.getChildren()) {
             if (regionContainsPosition(child.getRegion(), position)) {
-                // Special case handling for EGL as there can be overlapping elements
-                if (isEGL && child instanceof NameExpression) {
-                    var nameExpression = (NameExpression) child;
-                    var name = nameExpression.getName();
-                    if (name.equals("out") || name.equals("printdyn")) {
-                        continue; // Skip this element
-                    }
+                if (shouldIgnoreElement(child, isEGL)) {
+                    continue; // Skip this element
                 }
                 return getElementAtPosition(child, position, isEGL);
             }
         }
         return parent;
+    }
+
+    protected boolean shouldIgnoreElement(ModuleElement element, boolean isEGL) {
+        if (!isEGL) return false;
+        // Currently, we only need to ignore some elements in EGL as they can have overlapping regions
+
+        if (element instanceof NameExpression) {
+            var nameExpression = (NameExpression) element;
+            var name = nameExpression.getName();
+            return name.equals("out") || name.equals("printdyn");
+        }
+
+        if (element instanceof ExpressionStatement) {
+            var expressionStatement = (ExpressionStatement) element;
+            var expression = expressionStatement.getExpression();
+            if (expression instanceof OperationCallExpression) {
+                var operationCall = (OperationCallExpression) expression;
+                var operationName = operationCall.getName();
+                return operationName.equals("_outdent");
+            }
+        }
+
+        return false;
     }
 
 }

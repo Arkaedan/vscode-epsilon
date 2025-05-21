@@ -16,6 +16,8 @@ Hello
 [%
 @template
 operation foo() { %]
+[% if (true) { -%][%=baz()%][% } %]
+[% if (true) { -%][%= 5.bar() %][% } %]
 [%=baz()%]
 [%= 5.bar() %]
 [% } %]
