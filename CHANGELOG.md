@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.3
+
+- Another improvement for `Go to Definition` in EGL
+
 ## 2.4.2
 
 - Multiple fixes for `Go to Definition` in EGL
