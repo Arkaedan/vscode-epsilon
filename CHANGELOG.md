@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.4.4
+
+- Support `Go to Definition` for imports
+- Refactored `Go to Definition` handling for EGL
+
 ## 2.4.3
 
 - Another improvement for `Go to Definition` in EGL
