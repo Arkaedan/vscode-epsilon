@@ -24,10 +24,7 @@ import org.eclipse.epsilon.egl.EgxModule;
 import org.eclipse.epsilon.eml.EmlModule;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.IEolModule;
-import org.eclipse.epsilon.eol.dom.ExpressionStatement;
-import org.eclipse.epsilon.eol.dom.NameExpression;
-import org.eclipse.epsilon.eol.dom.Operation;
-import org.eclipse.epsilon.eol.dom.OperationCallExpression;
+import org.eclipse.epsilon.eol.dom.*;
 import org.eclipse.epsilon.epl.EplModule;
 import org.eclipse.epsilon.etl.EtlModule;
 import org.eclipse.epsilon.evl.EvlModule;
@@ -237,40 +234,63 @@ public class EpsilonTextDocumentService implements TextDocumentService {
     @Override
     public CompletableFuture<Either<List<? extends Location>, List<? extends LocationLink>>> definition(DefinitionParams params) {
 		var position = params.getPosition();
-        var uri = params.getTextDocument().getUri();
-        var module = uriModuleMap.get(uri);
+        var moduleUri = params.getTextDocument().getUri();
+        var module = uriModuleMap.get(moduleUri);
         if (module == null) {
             // Module not found, return empty list
             return CompletableFuture.completedFuture(Either.forLeft(Collections.emptyList()));
         }
         boolean isEGL = module instanceof EglModule;
-        var element = getElementAtPosition(module, position, isEGL);
-        if (element instanceof NameExpression) {
-            element = element.getParent();
+        List<ModuleElement> elements;
+        if (isEGL) {
+            elements = getEglElementAtPosition(module, position);
+        } else {
+            elements = List.of(getElementAtPosition(module, position));
         }
-        if (element instanceof OperationCallExpression) {
-            var operationCall = (OperationCallExpression) element;
-            var operationName = operationCall.getName();
-            var availableOperations = module.getOperations();
-            var foundOperations = new ArrayList<Operation>();
-            for (Operation operation : availableOperations) {
-                if (operation.getName().equals(operationName)) {
-                    foundOperations.add(operation);
+        var locations = new ArrayList<Location>();
+        for (ModuleElement element : elements) {
+            if (element instanceof NameExpression) {
+                element = element.getParent();
+            }
+            if (element instanceof OperationCallExpression) {
+                var operationCall = (OperationCallExpression) element;
+                var operationName = operationCall.getName();
+                var availableOperations = module.getOperations();
+                var foundOperations = new ArrayList<Operation>();
+                for (Operation operation : availableOperations) {
+                    if (operation.getName().equals(operationName)) {
+                        foundOperations.add(operation);
+                    }
+                }
+                for (Operation operation : foundOperations) {
+                    locations.add(getLocation(operation));
                 }
             }
-            var foundOperationLocations = new ArrayList<Location>();
-            for (Operation operation : foundOperations) {
-                var location = new Location();
-                location.setUri(operation.getModule().getUri().toString());
-                location.setRange(new Range(
-                        new Position(operation.getRegion().getStart().getLine() - 1, operation.getRegion().getStart().getColumn()),
-                        new Position(operation.getRegion().getEnd().getLine() - 1, operation.getRegion().getEnd().getColumn())));
-                foundOperationLocations.add(location);
+            if (element instanceof StringLiteral) {
+                element = element.getParent();
             }
-            return CompletableFuture.completedFuture(Either.forLeft(foundOperationLocations));
+            if (element instanceof Import) {
+                var importElement = (Import) element;
+                var uri = importElement.getModule().getSourceUri().toString();
+                var location = new Location();
+                location.setUri(uri);
+                location.setRange(new Range(new Position(0, 0), new Position(0, 0)));
+                locations.add(location);
+            }
         }
-        return CompletableFuture.completedFuture(Either.forLeft(Collections.emptyList()));
+        return CompletableFuture.completedFuture(Either.forLeft(locations));
 	}
+
+    protected Location getLocation(Operation operation) {
+        var uri = operation.getModule().getUri().toString();
+        var region = operation.getRegion();
+        var start = region.getStart();
+        var end = region.getEnd();
+        var location = new Location();
+        location.setUri(uri);
+        location.setRange(new Range(new Position(start.getLine() - 1, start.getColumn()), new Position(end.getLine() - 1, end.getColumn())));
+        return location;
+    }
 
     protected boolean regionContainsPosition(Region region, Position position) {
         var start = region.getStart();
@@ -296,33 +316,65 @@ public class EpsilonTextDocumentService implements TextDocumentService {
         return true;
     }
 
-    protected ModuleElement getElementAtPosition(ModuleElement parent, Position position, boolean isEGL) {
+    protected ModuleElement getElementAtPosition(ModuleElement parent, Position position) {
         for (ModuleElement child : parent.getChildren()) {
             if (regionContainsPosition(child.getRegion(), position)) {
-                if (shouldIgnoreElement(child, isEGL)) {
-                    continue; // Skip this element
-                }
-                return getElementAtPosition(child, position, isEGL);
+                return getElementAtPosition(child, position);
             }
         }
         return parent;
     }
 
-    protected boolean shouldIgnoreElement(ModuleElement element, boolean isEGL) {
-        if (!isEGL) return false;
-        // Currently, we only need to ignore some elements in EGL as they can have overlapping regions
+    // EGL has overlapping elements so we need to get all possible elements at the position
+    protected List<ModuleElement> getElementsAtPosition(ModuleElement parent, Position position) {
+        List<ModuleElement> elements = new ArrayList<>();
 
+        for (ModuleElement child : parent.getChildren()) {
+            if (regionContainsPosition(child.getRegion(), position)) {
+                elements.addAll(getElementsAtPosition(child, position));
+            }
+        }
+
+        if (elements.isEmpty()) {
+            elements.add(parent);
+        }
+
+        return elements;
+    }
+
+    protected List<ModuleElement> getEglElementAtPosition(ModuleElement parent, Position position) {
+        List<ModuleElement> elements = getElementsAtPosition(parent, position);
+        List<ModuleElement> filteredElements = new ArrayList<>();
+        for (ModuleElement element : elements) {
+            if (!shouldIgnoreEglElement(element)) {
+                filteredElements.add(element);
+            }
+        }
+
+        for (ModuleElement element : filteredElements) {
+            if (element instanceof NameExpression) {
+                System.out.println(((NameExpression) element).getName() + " " + element.getRegion());
+            } else if (element instanceof OperationCallExpression) {
+                System.out.println(((OperationCallExpression) element).getName() + " " + element.getRegion());
+            } else {
+                System.out.println(element.getClass().getName() + " " + element.getRegion());
+            }
+        }
+
+        return filteredElements;
+    }
+
+    protected boolean shouldIgnoreEglElement(ModuleElement element) {
         if (element instanceof NameExpression) {
             var nameExpression = (NameExpression) element;
             var name = nameExpression.getName();
-            return name.equals("out") || name.equals("printdyn");
+            return name.equals("out") || name.equals("printdyn") || name.equals("_outdent");
         }
 
-        if (element instanceof ExpressionStatement) {
-            var expressionStatement = (ExpressionStatement) element;
-            var expression = expressionStatement.getExpression();
-            if (expression instanceof OperationCallExpression) {
-                var operationCall = (OperationCallExpression) expression;
+        if (element instanceof StringLiteral) {
+            var parent = element.getParent();
+            if (parent instanceof OperationCallExpression) {
+                var operationCall = (OperationCallExpression) parent;
                 var operationName = operationCall.getName();
                 return operationName.equals("_outdent");
             }

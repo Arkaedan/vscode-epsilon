@@ -1,3 +1,5 @@
+[% import "foo.eol"; %]
+
 [%="Hello"%]
 [%=baz()%]
 
@@ -15,7 +17,7 @@ Hello
 
 [%
 @template
-operation foo() { %]
+operation cool() { %]
 [% if (true) { -%][%=baz()%][% } %]
 [% if (true) { -%][%= 5.bar() %][% } %]
 [%=baz()%]
