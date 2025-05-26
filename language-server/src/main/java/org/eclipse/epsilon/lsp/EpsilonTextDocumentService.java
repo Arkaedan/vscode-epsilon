@@ -351,16 +351,6 @@ public class EpsilonTextDocumentService implements TextDocumentService {
             }
         }
 
-        for (ModuleElement element : filteredElements) {
-            if (element instanceof NameExpression) {
-                System.out.println(((NameExpression) element).getName() + " " + element.getRegion());
-            } else if (element instanceof OperationCallExpression) {
-                System.out.println(((OperationCallExpression) element).getName() + " " + element.getRegion());
-            } else {
-                System.out.println(element.getClass().getName() + " " + element.getRegion());
-            }
-        }
-
         return filteredElements;
     }
 
